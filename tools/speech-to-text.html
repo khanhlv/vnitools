@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Online text to voice | text to speech</title> 
+  <meta name="description" content="Speech to text. Voice to text converter online."> 
+  <link href="/assets/npm/bootstrap%405.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #calcform {
+      padding:20px;
+      background:#eee8d5;
+      border:1px solid #eee;
+      border-radius:7px;
+   }
+	#calcform button>i { vertical-align:middle; }
+   #text { font-size:20px; }
+   .btn-light { background:#eee8d5; border-color:unset; border-color:#eee8d5; }
+   .btn-light:hover,.btn-light:focus { background:#ded8c5; border-color:unset; border-color:#eee8d5; }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../index.html">Home</a>› 
+    <a href="index.html">Tools</a>› Speech to text 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Speech to text</h1> 
+     <form id="calcform"> 
+      <div id="topbar" class="btn-group mb-2"> 
+       <button type="button" onclick="playbtn()" id="play" class="btn btn-light"><i class="material-icons">mic_none</i> Activate</button> 
+       <button type="button" onclick="zoomin()" title="Zoom In" class="btn btn-light"><i class="material-icons">zoom_in</i></button> 
+       <button type="button" onclick="zoomout()" title="Zoom Out" class="btn btn-light"><i class="material-icons">zoom_out</i></button> 
+       <button type="button" id="full" title="Fullscreen" onclick="OnFullscreen()" class="btn btn-light"><i class="material-icons">fullscreen</i></button> 
+       <button type="button" onclick="select()" title="Select all" class="btn btn-light"><i class="material-icons">select_all</i></button> 
+       <button type="reset" onclick="clear()" title="Clear" class="btn btn-light"><i class="material-icons">clear</i></button> 
+      </div> 
+      <div class="form-group"> 
+       <textarea rows="10" id="text" spellcheck="true" class="form-control"></textarea> 
+      </div> 
+      <div class="form-group mt-2"> 
+       <button type="button" title="Share" class="btn btn-light" onclick="OnShare()"><img src="../lib/icons/material/svg/share_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Share</button> 
+       <button type="button" title="Copy" onclick="OnCopy()" class="btn btn-light"><img src="../lib/icons/material/svg/content_copy_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Copy</button> 
+       <button type="button" title="Save" onclick="OnSave()" class="btn btn-light"><img src="../lib/icons/material/svg/save_alt_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Save</button> 
+       <select id="langsel" class="form-control mt-2" onchange="OnLangListChange()"></select> 
+      </div> 
+     </form> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="text-to-speech.html">Text to speech reader</a></li> 
+      <li><a href="voice-recorder.html">Voice recorder</a></li> 
+      <li><a href="screenshot.html">Screenshot online</a></li> 
+      <li><a href="screen-recorder.html">Screen recorder</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="alarm-clock.html">Alarm Clock</a></li> 
+     <li><a href="bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="calendar.html">Calendar</a></li> 
+     <li><a href="timer.html">Countdown Timer</a></li> 
+     <li><a href="current-time.html">Current Time</a></li> 
+     <li><a href="line-graph.html">Line graph maker</a></li> 
+     <li><a href="../calc/math/calculator.html">Online Calculator</a></li> 
+     <li><a href="grocery-list.html">Online grocery list</a></li> 
+     <li><a href="notepad.html">Online Notepad</a></li> 
+     <li><a href="notes.html">Online Notes</a></li> 
+     <li><a href="mirror.html">Online Mirror</a></li> 
+     <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     <li><a href="screenshot.html">Online screenshot</a></li> 
+     <li><a href="speech-to-text.html">Speech to text</a></li> 
+     <li><a href="stopwatch.html">Stopwatch</a></li> 
+     <li><a href="text-to-speech.html">Text to speech</a></li> 
+     <li><a href="todays-date.html">Today's Date</a></li> 
+     <li><a href="todo-list.html">To-Do List</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../index-2.html">Home</a> | 
+   <a href="../web/index.html">Web</a> | 
+   <a href="../math/index.html">Math</a> | 
+   <a href="../electric/index.html">Electricity</a> | 
+   <a href="../calc/index.html">Calculators</a> | 
+   <a href="../convert/index.html">Converters</a> | 
+   <a href="index.html">Tools</a> 
+   <p>© <a href="../index.html">Calculators &amp; Tools</a> | <a href="../about/about.html" rel="nofollow">About</a> | <a href="../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../lib/FileSaver.js-master/FileSaver.js" defer></script> 
+  <script>
+   "use strict";
+   var isfullscreen=false;
+	var recognition;
+	var play=false;
+   var fontsize=20;
+   const txtElem=document.getElementById("text");
+   const playElem=document.getElementById("play");
+   const fullElem = document.getElementById("full");
+   const langselElem = document.getElementById("langsel");
+
+   window.addEventListener("DOMContentLoaded",function() {
+      populateLangList();
+      var p = GetURLParams();
+      if( Object.keys(p).length>0 && p.txt!="" ) {
+         txtElem.value = decodeURIComponent(p.txt)+"\n\n"+area.value;
+      }
+      var SpeechRecognition = (SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition);
+      var SpeechGrammarList = window.SpeechGrammarList || webkitSpeechGrammarList;
+      var SpeechRecognitionEvent = window.SpeechRecognitionEvent || webkitSpeechRecognitionEvent;
+      if( !SpeechRecognition ) {
+         alert("Speech recognition is not supported. Please use Chrome browser.");
+         return;
+      }
+		recognition = new SpeechRecognition();
+		recognition.lang = navigator.languages[0]; //'en-US';
+      recognition.continuous = false;
+		recognition.interimResults = false;
+		recognition.maxAlternatives = 1;
+
+		recognition.onresult = function(event) {
+			var txt=event.results[0][0].transcript;
+			txt = txtElem.value+" "+txt;
+			txtElem.value=txt;
+    		console.log('You said: ', event.results[0][0].transcript);
+		};
+		//recognition.onspeechend = function() {
+		recognition.onend = function() {
+		   recognition.stop();
+		   //recognition.abort();
+         if( play )
+            recognition.start();
+		}
+      txtElem.focus();
+	});
+   function populateLangList() {
+      const languageNames = new Intl.DisplayNames(['en'], {type: 'language'});
+      for(var i=0; i<navigator.languages.length; i++) {
+         var option = document.createElement("option");
+         var lang=navigator.languages[i];
+         option.text = languageNames.of(lang);
+         option.value = lang;
+         langselElem.appendChild(option);
+      }
+   }
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function OnLangListChange() {
+      var i=langselElem.selectedIndex;
+      recognition.lang = navigator.languages[i];
+   }
+	function playbtn() {
+		if( play ) {
+			//recognition.stop();
+		   recognition.abort();
+         //recognition.stop();
+         playElem.innerHTML="<i class=\"material-icons\">mic_none</i> Activate";
+			play=false;
+         playElem.style.setProperty("background","#eee8d5");
+         //playElem.style.backgroundColor="#eee8d5";
+         txtElem.focus();
+		}
+		else {
+         playElem.innerHTML="<i class=\"material-icons\">mic</i> Deactivate";
+			play=true;
+			recognition.start();
+         playElem.style.setProperty("background","#ff8080");
+		}
+	}
+	function select() {
+		txtElem.select();
+	}
+	function clear() {
+		txtElem.value="";
+	}
+   function zoomout()
+   {
+      fontsize/=1.1;
+      var size=Math.round(fontsize)+"px";
+      txtElem.style.fontSize=size;
+   }
+   function zoomin()
+   {
+      fontsize*=1.1;
+      var size=Math.round(fontsize)+"px";
+      txtElem.style.fontSize=size;
+   }
+   function getShareData()
+   {
+      var txt=window.getSelection().toString();
+      if( txt=="" ) txt=txtElem.value;
+      var url="speech-to-text9073.html?txt="+encodeURIComponent(txt);
+      if( url.length>=16384 ) {
+         url=url.substring(0,16384);
+         alert("The URL length is limited to 16384");
+      }
+      return { txt:txt, url:url };
+   }
+   function OnShare()
+   {
+      if(navigator.share) {
+         var data=getShareData();
+         navigator.share({
+            title: "My notes",
+            text: data.txt,
+            url: data.url
+         })
+         .then(() => console.log('Successful share'))
+         .catch(error => console.log('Error sharing:', error));
+      }
+   }
+   function OnCopy()
+   {
+      if( typeof navigator.clipboard==="object")
+         if( typeof navigator.clipboard.writeText==="function")
+         {
+            navigator.clipboard.writeText(txtElem.value);
+         }
+      else {
+         txtElem.select();
+         document.execCommand("copy");
+      }
+   }
+   function OnSave()
+   {
+      fileSave("mytext.html");
+   }
+   function fileSave(filename)
+   {
+      var txt=txtElem.value;
+      if( txt=="" ) return;
+      var blob = new Blob([txt], {type: "text/plain;charset=utf-8"});
+      saveAs(blob, filename);
+   }
+   function FullscreenReq()
+   {
+      if(calcform.requestFullscreen)
+         calcform.requestFullscreen();
+      else if(calcform.mozRequestFullScreen)
+         calcform.mozRequestFullScreen();
+      else if(calcform.webkitRequestFullscreen)
+         calcform.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      else if(calcform.msRequestFullscreen)
+         calcform.msRequestFullscreen();
+   }
+   function OnFullscreen()
+   {
+      if( !isfullscreen ) {
+         console.log("enter");
+         isfullscreen=true;
+         //fullElem.children[0].src="/lib/icons/material/svg/fullscreen_exit_white_24dp.svg";
+         fullElem.innerHTML="<i class=\"material-icons\">fullscreen_exit</i>";
+         FullscreenReq();
+         calcform.style.setProperty("height", "100vh");
+         txtElem.style.setProperty("height", "70vh");
+         setTimeout(function() {
+            document.addEventListener('fullscreenchange', OnFullscreen);
+         }, 1000);
+      }
+      else {
+         console.log("exit");
+         isfullscreen=false;
+         //fullElem.children[0].src="/lib/icons/material/svg/fullscreen_white_24dp.svg";
+         fullElem.innerHTML="<i class=\"material-icons\">fullscreen</i>";
+         document.exitFullscreen();
+         calcform.style.setProperty("height", "unset");
+         txtElem.style.setProperty("height", "unset");
+         document.removeEventListener('fullscreenchange', OnFullscreen);
+      }
+   }
+</script>  
+ </body>
+</html>

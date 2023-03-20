@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Help calculator</title> 
+  <link href="/assets/npm/bootstrap%405.2.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+	.key
+	{
+		font-size:medium;
+		color:#000;
+		background:#f0f0f0;
+		border:1px #c0c0c0 solid;
+		padding:2px 6px;
+		margin:0px 3px;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+	}
+	.key img {-webkit-filter: invert(30%); filter: invert(30%);}
+   .fliph {
+      -moz-transform: scale(-1, 1);
+      -webkit-transform: scale(-1, 1);
+      -o-transform: scale(-1, 1);
+      -ms-transform: scale(-1, 1);
+      transform: scale(-1, 1);
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Math Calculators</a>› 
+    <a href="calculator.html">Calculator</a>› Help 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Calculator Help</h1> 
+     <table class="dtable"> 
+      <tbody> 
+       <tr> 
+        <th>Operation</th> 
+        <th>Button</th> 
+        <th>Shortcut key</th> 
+        <th>Description</th> 
+       </tr> 
+       <tr> 
+        <td>Backspace</td> 
+        <td><span class="key fs-5"><img src="../../lib/icons/material/svg/backspace_black_24dp.svg" alt="backspace"></span></td> 
+        <td><span class="key">Backspace</span></td> 
+        <td>delete to left</td> 
+       </tr> 
+       <tr> 
+        <td>All Clear</td> 
+        <td><span class="key fs-5">AC</span></td> 
+        <td>&nbsp;</td> 
+        <td>clear calculations screen</td> 
+       </tr> 
+       <tr> 
+        <td>Exp</td> 
+        <td><span class="key fs-5">&nbsp;E&nbsp;</span></td> 
+        <td><span class="key">e</span></td> 
+        <td class="mathsymbol">2E5 = 2×10<sup>5</sup></td> 
+       </tr> 
+       <tr> 
+        <td>Answer</td> 
+        <td><span class="key fs-5">Ans</span></td> 
+        <td>&nbsp;</td> 
+        <td>previous calculation result</td> 
+       </tr> 
+       <tr> 
+        <td>Help</td> 
+        <td><span class="key fs-5"><img src="../../lib/icons/material/svg/help_outline_black_24dp.svg" alt="help"></span></td> 
+        <td>&nbsp;</td> 
+        <td>Show this page</td> 
+       </tr> 
+       <tr> 
+        <td>Undo</td> 
+        <td><span class="key fs-4"><img src="../../lib/icons/material/svg/undo_black_24dp.svg" alt="undo"></span></td> 
+        <td><span class="key">Ctrl</span>+<span class="key">Z</span></td> 
+        <td>undo last editing change</td> 
+       </tr> 
+       <tr> 
+        <td>Redo</td> 
+        <td><span class="key fs-4"><img src="../../lib/icons/material/svg/redo_black_24dp.svg" alt="redo"></span></td> 
+        <td><span class="key">Ctrl</span>+<span class="key">Y</span></td> 
+        <td>do again editing change</td> 
+       </tr> 
+       <tr> 
+        <td>Left</td> 
+        <td><button type="button" class="key fliph fs-4">➞</button></td> 
+        <td>&nbsp;</td> 
+        <td>move cursor to the left</td> 
+       </tr> 
+       <tr> 
+        <td>Right</td> 
+        <td><span class="key fs-4">➞</span></td> 
+        <td>&nbsp;</td> 
+        <td>move cursor to the right</td> 
+       </tr> 
+       <tr> 
+        <td>Select all</td> 
+        <td>&nbsp;</td> 
+        <td><span class="key">Ctrl</span>+<span class="key">A</span></td> 
+        <td>select expression</td> 
+       </tr> 
+       <tr> 
+        <td>Copy</td> 
+        <td>&nbsp;</td> 
+        <td><span class="key">Ctrl</span>+<span class="key">C</span></td> 
+        <td>copy expression</td> 
+       </tr> 
+       <tr> 
+        <td>Paste</td> 
+        <td>&nbsp;</td> 
+        <td><span class="key">Ctrl</span>+<span class="key">V</span></td> 
+        <td>paste expression</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>&nbsp;</p> 
+     <p><a href="calculator.html" class="btn btn-outline-success btn-lg">Go Back ►</a></p> 
+     <br> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="../../tools/bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="../../tools/line-graph.html">Line graph maker</a></li> 
+     <li><a href="../../tools/notepad.html">Online Notepad</a></li> 
+     <li><a href="../../tools/mirror.html">Online Mirror</a></li> 
+     <li><a href="../../tools/pie-chart.html">Pie chart maker</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div>  
+ </body>
+</html>

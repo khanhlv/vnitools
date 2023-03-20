@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Conversion radians to degrees</title> 
+  <meta content="Degrees to radians angle conversion calculator and how to convert." name="description"> 
+  <style>
+	.calc2 input[type=text] { padding:5px; }
+	#angle { border:1px #ccc solid; padding:10px 20px; width:250px }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Conversion</a>› 
+    <a href="index.html">Number conversion</a>› 
+    <a href="degrees-to-radians.html">Degrees to radians</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Degrees to Radians conversion calculator</h1> 
+     <p>Enter angle in degrees and press the <em>Convert</em> button (e.g:30°, -60°):</p> 
+     <form name="calcform" autocomplete="off"> 
+      <table class="calc2"> 
+       <tbody> 
+        <tr> 
+         <td>Enter Degrees:</td> 
+         <td class="math"><input type="number" step="any" id="x" name="x" class="intext" style="width:250px;" autofocus></td> 
+         <td class="math">°</td> 
+        </tr> 
+        <tr> 
+         <td>&nbsp;</td> 
+         <td colspan="2"> <button type="button" title="Convert" class="btn" onclick="convert()"><img src="../../lib/icons/glyphicons_all/glyphicons_halflings/glyphicons_halflings_030_refresh.png" alt=""> Convert</button> <button type="reset" title="Reset" class="btn"><img src="../../lib/icons/glyphicons_all/glyphicons_halflings/glyphicons_halflings_013_remove.png" alt=""> Reset</button> <button type="button" title="Swap conversion" class="btn" onclick="location.href='radians-to-degrees.html';"><span>⇅</span> Swap</button> </td> 
+        </tr> 
+        <tr> 
+         <td>Radians result:</td> 
+         <td><textarea id="y" rows="3" class="outtext" style="width:250px; font-size:1.3em; font-family:times" readonly></textarea></td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td>Angle view:</td> 
+         <td> 
+          <canvas id="angle"></canvas></td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+     </form> 
+     <p><a href="radians-to-degrees.html">Radians to degrees converter ►</a></p> 
+     <h2 id="how">How to convert degrees to radians</h2> 
+     <p>Pi radians are equal to 180 degrees:</p> 
+     <p class="math">π rad = 180°</p> 
+     <p>One degree is equal&nbsp;0.01745329252 radians:</p> 
+     <p class="math">1° = π/180° = 0.005555556π = 0.01745329252 rad</p> 
+     <p>The angle α in radians is equal to the angle α in degrees times pi constant divided by 180 degrees:</p> 
+     <p class="math">α<sub>(radians)</sub> = α<sub>(degrees)</sub> × π / 180°</p> 
+     <p>or</p> 
+     <p class="math">radians = degrees × π / 180°</p> 
+     <h4>Example</h4> 
+     <p>Convert 30 degrees angle to radians:</p> 
+     <p class="math">α<sub>(radians)</sub> = α<sub>(degrees)</sub> × π / 180° = 30° × 3.14159 / 180° = 0.5236 rad</p> 
+     <h2 id="table">Degrees to radians conversion table</h2> 
+     <table class="ntable"> 
+      <tbody> 
+       <tr> 
+        <th>Degrees (°)</th> 
+        <th>Radians (rad)</th> 
+        <th>Radians (rad)</th> 
+       </tr> 
+       <tr> 
+        <td>0°</td> 
+        <td>0 rad</td> 
+        <td>0 rad</td> 
+       </tr> 
+       <tr> 
+        <td>30°</td> 
+        <td>π/6 rad</td> 
+        <td>0.5235987756 rad</td> 
+       </tr> 
+       <tr> 
+        <td>45°</td> 
+        <td>π/4 rad</td> 
+        <td>0.7853981634 rad</td> 
+       </tr> 
+       <tr> 
+        <td>60°</td> 
+        <td>π/3 rad</td> 
+        <td>1.0471975512 rad</td> 
+       </tr> 
+       <tr> 
+        <td>90°</td> 
+        <td>π/2 rad</td> 
+        <td>1.5707963268 rad</td> 
+       </tr> 
+       <tr> 
+        <td>120°</td> 
+        <td>2π/3 rad</td> 
+        <td>2.0943951024 rad</td> 
+       </tr> 
+       <tr> 
+        <td>135°</td> 
+        <td>3π/4 rad</td> 
+        <td>2.3561944902 rad</td> 
+       </tr> 
+       <tr> 
+        <td>150°</td> 
+        <td>5π/6 rad</td> 
+        <td>2.6179938780 rad</td> 
+       </tr> 
+       <tr> 
+        <td>180°</td> 
+        <td>π rad</td> 
+        <td>3.1415926536 rad</td> 
+       </tr> 
+       <tr> 
+        <td>270°</td> 
+        <td>3π/2 rad</td> 
+        <td>4.7123889804 rad</td> 
+       </tr> 
+       <tr> 
+        <td>360°</td> 
+        <td>2π rad</td> 
+        <td>6.2831853072 rad</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>&nbsp;</p> 
+     <p><a href="radians-to-degrees.html">Radians to degrees conversion ►</a></p> 
+     <p>&nbsp;</p> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul> 
+      <li><a href="radians-to-degrees.html">Radians to degrees conversion</a></li> 
+      <li><a href="how-degrees-to-radians.html">How to convert degrees to radians</a></li> 
+      <li><a href="how-radians-to-degrees.html">How to convert radians to degrees</a></li> 
+      <li><a href="degrees-to-degrees-minutes-seconds.html">Degrees to degrees,minutes,seconds</a></li> 
+      <li><a href="degrees-minutes-seconds-to-degrees.html">Degrees,minutes, seconds to degrees</a></li> 
+      <li><a href="../../calc/math/Sin_Calculator.html">Sine calculator</a></li> 
+      <li><a href="../../calc/math/Cos_Calculator.html">Cosine calculator</a></li> 
+      <li><a href="../../calc/math/Tan_Calculator.html">Tangent calculator</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>NUMBER CONVERSION</h5> 
+    <ul> 
+     <li><a href="ascii-hex-bin-dec-converter.html">ASCII,Hex,Binary,Decimal converter</a></li> 
+     <li><a href="ascii-to-binary.html">ASCII to binary</a></li> 
+     <li><a href="ascii-to-hex.html">ASCII to hex</a></li> 
+     <li><a href="base-converter.html">Base converter</a></li> 
+     <li><a href="binary-converter.html">Binary converter</a></li> 
+     <li><a href="binary-to-ascii.html">Binary to ASCII</a></li> 
+     <li><a href="binary-to-decimal.html">Binary to decimal</a></li> 
+     <li><a href="binary-to-hex.html">Binary to hex</a></li> 
+     <li><a href="date-to-roman-numerals.html">Date to roman</a></li> 
+     <li><a href="decimal-to-fraction.html">Decimal to fraction</a></li> 
+     <li><a href="decimal-to-percent.html">Decimal to percent</a></li> 
+     <li><a href="decimal-to-binary.html">Decimal to binary</a></li> 
+     <li><a href="decimal-to-octal.html">Decimal to octal</a></li> 
+     <li><a href="decimal-to-hex.html">Decimal to hex</a></li> 
+     <li><a href="degrees-to-degrees-minutes-seconds.html">Degrees to minutes,seconds</a></li> 
+     <li><a href="degrees-to-radians.html">Degrees to radians</a></li> 
+     <li><a href="fraction-to-decimal.html">Fraction to decimal</a></li> 
+     <li><a href="fraction-to-percent.html">Fraction to percent</a></li> 
+     <li><a href="hex-dec-bin-converter.html">Hex/decimal/octal/binary converter</a></li> 
+     <li><a href="hex-to-ascii.html">Hex to ASCII</a></li> 
+     <li><a href="hex-to-binary.html">Hex to binary</a></li> 
+     <li><a href="hex-to-decimal.html">Hex to decimal</a></li> 
+     <li><a href="degrees-minutes-seconds-to-degrees.html">Minutes, seconds to degrees</a></li> 
+     <li><a href="octal-to-decimal.html">Octal to decimal</a></li> 
+     <li><a href="percent-to-decimal.html">Percent to decimal</a></li> 
+     <li><a href="percent-to-fraction.html">Percent to fraction</a></li> 
+     <li><a href="Percent_to_PPM.html">Percent to ppm</a></li> 
+     <li><a href="PPM_to_Percent.html">ppm to percent</a></li> 
+     <li><a href="ppm-to-ppb.html">ppm to ppb</a></li> 
+     <li><a href="ppm-to-ppt.html">ppm to ppt</a></li> 
+     <li><a href="ppb-to-ppm.html">ppb to ppm</a></li> 
+     <li><a href="ppt-to-ppm.html">ppt to ppm</a></li> 
+     <li><a href="ppm-converter.html">ppm converter</a></li> 
+     <li><a href="radians-to-degrees.html">Radians to degrees</a></li> 
+     <li><a href="roman-numerals-converter.html">Roman numerals converter</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../../calc/index.html">Calculators</a> | 
+   <a href="../index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../convert.js"></script> 
+  <script src="../../lib/utils/mathview.js"></script> 
+  <script>
+   window.addEventListener("DOMContentLoaded",function() {
+      var params=GetURLParams();
+      if( typeof params.x!="undefined" && params.x!="" ) {
+         document.getElementById("x").value = params.x;
+         convert();
+      }
+   });
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+            params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function convert(x)
+   {
+      x = str2num(document.calcform.x.value);
+      y1 = x/180;
+      y1 = roundresult(y1);
+      y2 = x*Math.PI/180;
+      y2 = roundresult(y2);
+      var txt=num2str(x)+"\u00B0 \u00D7 \u03C0 / 180\u00B0 \n= ";
+      txt+=num2str(y1)+"\u03C0 rad \n= ";
+      txt+=num2str(y2)+" rad";
+      //document.calcform.y.value = txt;
+      document.getElementById("y").value = txt;
+      var obj = document.getElementById("angle");
+      Angle(obj,{
+         degrees: x,
+         radius: 60,
+         //lineColor: "rgb(255,255,255)",
+         fillColor: "rgb(255,255,180)",
+         lineWidth: 2,
+         label: "180\u00B0",
+         width: 250
+      });
+   }
+</script>  
+ </body>
+</html>

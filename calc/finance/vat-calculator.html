@@ -1,0 +1,279 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Calculator vat</title> 
+  <meta content="Value added tax (VAT) tax  calculator online. UK/Ireland/Australia/..." name="description"> 
+  <link href="/assets/npm/bootstrap%405.2.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #calcform { padding:20px; max-width:550px; background:#eee8d5; }
+   .btn-outline-secondary:hover>img { filter:invert(1); }
+   .fraction {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle; 
+      letter-spacing: 0.001em;
+      text-align: center;
+   }
+   .fraction > span { display: block; padding: 0.1em; }
+   .fraction span.fdn { border-top: 2px solid black; }
+@media all and (max-width: 576px) {
+   #calcform>div:nth-child(4)>label { display:none; }
+}
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Finance</a>› 
+    <a href="vat-calculator.html">VAT tax calculator</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>VAT Calculator</h1> 
+     <p>Value added tax (VAT) calculator:</p> 
+     <form id="calcform" name="calcform" autocomplete="off"> 
+      <div class="row"> 
+       <label for="Select1" class="col-sm-3 col-form-label">Country</label> 
+       <div class="col-sm-9"> 
+        <select id="Select1" name="Select1" onchange="OnCountryChange()" class="form-select"> <option>Australia</option> <option>Belgium</option> <option>Denmark</option> <option>Finland</option> <option>France</option> <option>Germany</option> <option>Greece</option> <option>India</option> <option>Ireland</option> <option>Israel</option> <option>Italy</option> <option>Malaysia</option> <option>Mexico</option> <option>Netherlands</option> <option>New Zealand</option> <option>Norway</option> <option>Pakistan</option> <option>Phillipine</option> <option>Poland</option> <option>Romania</option> <option>Singapore</option> <option>South Africa</option> <option>Spain</option> <option>Sweden</option> <option>Turkey</option> <option>UAE</option> <option selected>United Kingdom</option> <option>Other country</option> </select> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="Text1" class="col-sm-3 col-form-label">Initial amount</label> 
+       <div class="col-sm-9"> 
+        <div class="input-group"> 
+         <span id="cur1" class="input-group-text bg-white">£</span> 
+         <input id="amount" name="amount" type="number" min="0" step="any" class="form-control" autofocus> 
+         <button type="button" class="btn btn-outline-secondary fw-bold" onclick="OnClear()">×</button> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="rate" class="col-sm-3 col-form-label">VAT rate</label> 
+       <div class="col-sm-9"> 
+        <div class="input-group"> 
+         <input id="rate" name="rate" type="number" min="0" step="any" value="20" class="form-control"> 
+         <span class="input-group-text bg-white">%</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="" class="col-sm-3 col-form-label">&nbsp;</label> 
+       <div class="col-sm-9"> 
+        <button type="button" title="Add VAT" class="btn btn-success" onclick="OnCalcVAT(1)"><span class="fw-bold">+</span> Add VAT</button> 
+        <button type="button" title="Remove VAT" class="btn btn-secondary" onclick="OnCalcVAT(0)"><span class="fw-bold">-</span> Remove VAT</button> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="net" class="col-sm-3 col-form-label">Net amount</label> 
+       <div class="col-sm-9"> 
+        <div class="input-group"> 
+         <span id="cur2" class="input-group-text bg-white">£</span> 
+         <input id="net" type="text" class="form-control" readonly> 
+         <button type="button" title="Copy" class="btn btn-outline-secondary" onclick="OnCopy(0)"><img src="../../lib/icons/material/svg/content_copy_black_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="vat" class="col-sm-3 col-form-label">VAT amount</label> 
+       <div class="col-sm-9"> 
+        <div class="input-group"> 
+         <span id="cur3" class="input-group-text bg-white">£</span> 
+         <input id="vat" type="text" class="form-control" readonly> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="gross" class="col-sm-3 col-form-label">Gross amount</label> 
+       <div class="col-sm-9"> 
+        <div class="input-group"> 
+         <span id="cur4" class="input-group-text bg-white">£</span> 
+         <input id="gross" type="text" class="form-control" readonly> 
+         <button type="button" title="Copy" class="btn btn-outline-secondary" onclick="OnCopy(1)"><img src="../../lib/icons/material/svg/content_copy_black_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="row mt-3"> 
+       <label for="txt" class="col-sm-3 col-form-label">Calculation History</label> 
+       <div class="col-sm-9"> 
+        <textarea rows="5" id="txt" class="form-control" readonly></textarea> 
+       </div> 
+      </div> 
+     </form> 
+     <p><a href="gst-calculator.html">GST calculator ►</a></p> 
+     <h2>VAT tax calculation</h2> 
+     <p class="mathsymbol">VAT amount = VAT Rate(%) × Net amount</p> 
+     <p class="mathsymbol">Gross amount = Net amount + VAT amount = (100% + VAT Rate(%)) × Net amount</p> 
+     <div class="mathsymbol">
+       Net amount = Gross amount - VAT amount = 
+      <div class="fraction"> 
+       <span class="fup">Gross amount</span> 
+       <span class="fdn">100% + VAT Rate(%)</span> 
+      </div> 
+     </div> 
+     <h4>Example</h4> 
+     <p class="mathsymbol">Net amount = 100£<br>VAT Rate = 20%</p> 
+     <p class="mathsymbol">VAT amount = 20%×100£ = 20£</p> 
+     <p> </p> 
+     <p class="mathsymbol">Gross amount = (100%+20%)×100£ = 120£</p> 
+     <div class="mathsymbol">
+       Net amount = 
+      <div class="fraction"> 
+       <span class="fup">120£</span> 
+       <span class="fdn">100%+20%</span> 
+      </div> = 100£ 
+     </div> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="gst-calculator.html">GST calculator</a></li> 
+      <li><a href="compound-interest-calculator.html">Compound interest calculator</a></li> 
+      <li><a href="simple-interest-calculation.html">Simple interest calculation</a></li> 
+      <li><a href="mortgage-calculator.html">Mortgage calculator</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>FINANCIAL CALCULATORS</h5> 
+    <ul> 
+     <li><a href="mortgage-calculator.html">Mortgage calculator</a></li> 
+     <li><a href="compound-interest-calculator.html">Compound interest calculator</a></li> 
+     <li><a href="effective-interest-rate-calculator.html">Effective interest rate calculator</a></li> 
+     <li><a href="gst-calculator.html">GST calculator</a></li> 
+     <li><a href="simple-interest-calculator.html">Simple interest calculator</a></li> 
+     <li><a href="vat-calculator.html">VAT calculator</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../../lib/utils/utils.js"></script> 
+  <script src="../calc2.js"></script> 
+  <script>
+   var amountElem=document.getElementById("amount");
+   var rateElem=document.getElementById("rate");
+   var netElem=document.getElementById("net");
+   var vatElem=document.getElementById("vat");
+   var grossElem=document.getElementById("gross");
+   var txtElem=document.getElementById("txt");
+   var txt="";
+   window.addEventListener("DOMContentLoaded",function() {
+      if( window.innerWidth>800 )
+         amountElem.type="text";
+   });
+   function OnClear()
+   {
+      amountElem.value = '';
+      netElem.value = '';
+      vatElem.value = '';
+      grossElem.value = '';
+   }
+   function OnCountryChange()
+   {
+      vat_look=[10,21,25,24,19.6,19,23,13.5,23,17,22,10,16,21,15,25,16,12,23,24,7,14,21,25,18,0,20,''];
+      c_look=['$','&euro;','kr','&euro;','&euro;','&euro;','&euro;','R','&euro;','&#8362;','&euro;','RM','$','&euro;','$','kr','Rs','P','zl','L','$','R','&euro;','kr','t','د.إ','&pound;',''];
+      i = document.calcform.Select1.selectedIndex;
+      c = c_look[i];
+      document.getElementById("cur1").innerHTML = c;
+      document.getElementById("cur2").innerHTML = c;
+      document.getElementById("cur3").innerHTML = c;
+      document.getElementById("cur4").innerHTML = c;
+      rateElem.value = num2str(vat_look[i]);
+   }
+   function OnCalcVAT(op)
+   {
+      i = document.calcform.Select1.selectedIndex;
+      amount = amountElem.value;
+      if( amount=='' ) amount='0';
+      amount = str2num(amount);
+      rate = rateElem.value;
+      if( rate=='' ) rate='0';
+      //rate = parseFloat(rate);
+      rate = str2num(rate);
+      if( op==1 )
+      {
+         net_amount = amount;
+         vat_amount = amount*rate/100;
+         gross_amount = parseFloat(net_amount)+parseFloat(vat_amount);
+         txt+=net_amount+"\u00D7(1+"+rate+"/100)\n= "+gross_amount+"\n";
+      }
+      else
+      {
+         gross_amount = amount;
+         net_amount = 100*amount/(100.0+parseFloat(rate));
+         vat_amount = parseFloat(gross_amount)-parseFloat(net_amount);
+         txt+=gross_amount+"/(1+"+rate+"/100)\n= "+net_amount+"\n";
+      }
+      net_amount=num2str(net_amount,2);
+      vat_amount=num2str(vat_amount,2);
+      gross_amount=num2str(gross_amount,2);
+      netElem.value = net_amount;
+      vatElem.value = vat_amount;
+      grossElem.value = gross_amount;
+      txtElem.value = txt;
+      txtElem.scrollTop=txtElem.scrollHeight;
+   }
+   function OnCopy(i)
+   {
+      var text;
+      if( i==0 ) text=netElem;
+      if( i==1 ) text=grossElem;
+      text.select();
+      text.setSelectionRange(0, 99999);
+      navigator.clipboard.writeText(text.value);
+   }
+</script>  
+ </body>
+</html>

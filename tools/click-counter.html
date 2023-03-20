@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Counter number &amp; tally | online counter click</title> 
+  <meta content="Clicker counter online. Tally counter. Number counter" name="description"> 
+  <link rel="stylesheet" href="/assets/npm/bootstrap%404.5.3/dist/css/bootstrap.min.css"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   #gen { max-width:500px; background:#eee8d5; padding:20px; border-radius:.25rem; touch-action: manipulation; }
+   #count,#count2 { font-size:3rem; }
+   #resetbtn,#resetbtn2,#addbtn,#addbtn2,#subbtn,#subbtn2 { font-size:2rem; }
+   .btn-success { padding:0.8rem 1rem; }
+   .btn-secondary { padding:0.2rem 1rem; }
+   #gen .input-group-append { background:#fff; }
+   #col2div { display:none; }
+   @media all and (max-width: 350px) {
+      #count,#count2 { font-size:2rem; }
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../index.html">Home</a>› 
+    <a href="index.html">Tools</a>› 
+    <a href="click-counter.html">Tally click counter online</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Click Counter</h1> 
+     <p>Click counter online. click '+' button or space to count:</p> 
+     <form id="gen"> 
+      <div class="row"> 
+       <div class="col"> 
+        <div class="form-group input-group"> 
+         <input type="number" step="any" value="0" id="count" class="form-control form-control-lg" autofocus> 
+         <div class="input-group-append"> 
+          <button type="button" id="resetbtn" title="Reset" onclick="count.value=0;" class="btn btn-outline-secondary">×</button> 
+         </div> 
+        </div> 
+        <div class="form-group"> 
+         <button type="button" id="addbtn" onclick="onAdd()" class="btn btn-lg btn-block btn-success">+</button> 
+        </div> 
+        <div class="form-group mt-4"> 
+         <button type="button" id="subbtn" onclick="onRemove()" class="btn btn-lg btn-block btn-secondary">-</button> 
+        </div> 
+       </div> 
+       <div id="col2div" class="col"> 
+        <div class="form-group input-group" id="count2div"> 
+         <input type="number" step="any" value="0" id="count2" class="form-control form-control-lg"> 
+         <div class="input-group-append"> 
+          <button type="button" id="resetbtn2" title="Reset" onclick="count2.value=0;" class="btn btn-outline-secondary">×</button> 
+         </div> 
+        </div> 
+        <div class="form-group" id="addbtn2div"> 
+         <button type="button" id="addbtn2" onclick="onAdd2()" class="btn btn-lg btn-block btn-success">+</button> 
+        </div> 
+        <div class="form-group mt-4" id="subbtn2div"> 
+         <button type="button" id="subbtn2" onclick="onRemove2()" class="btn btn-lg btn-block btn-secondary">-</button> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group"> 
+       <button type="button" id="expbtn" title="More" onclick="onExpand()" class="btn btn-block btn-secondary">More <span>»</span></button> 
+      </div> 
+      <div class="form-group"> 
+       <button type="button" id="optbtn" title="Options" onclick="onOptions()" class="btn btn-block btn-secondary">Options</button> 
+      </div> 
+      <div id="stepdiv" class="form-group d-none"> 
+       <label for="step">Click step</label> 
+       <input type="number" min="0" id="step" placeholder="1" oninput="onStep()" class="form-control"> 
+      </div> 
+     </form> 
+     <p><a href="click-test.html">Click speed test ►</a></p> 
+     <p><a href="scoreboard.html">Scoreboard with timer ►</a></p> 
+     <div id="adngin-bottom_01-0"></div> 
+     <h2>Why use the click counter</h2> 
+     <p>Use the click counter to count the number of any object, score and money.</p> 
+     <h2>How to use the click counter</h2> 
+     <ul> 
+      <li>Press '+' button or space to increment the counter.</li> 
+      <li>Press '-' button to decrement the counter.</li> 
+      <li>Press '×' button to reset the counter.</li> 
+      <li>Press <i>More/Less</i> button to enable/disable second counter.</li> 
+     </ul> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="click-test.html">CPS test</a></li> 
+      <li><a href="scoreboard.html">Online scoreboard</a></li> 
+      <li><a href="timer.html">Online timer</a></li> 
+      <li><a href="mirror.html">Online mirror</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="click-counter.html">Click counter</a></li> 
+     <li><a href="click-test.html">Click speed test</a></li> 
+     <li><a href="line-graph.html">Line graph maker</a></li> 
+     <li><a href="notepad.html">Online Notepad</a></li> 
+     <li><a href="mirror.html">Online Mirror</a></li> 
+     <li><a href="password-generator.html">Password generator</a></li> 
+     <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     <li><a href="scatter-plot.html">Scatter plot maker</a></li> 
+     <li><a href="scoreboard.html">Online scoreboard</a></li> 
+     <li><a href="screenshot.html">Online screenshot</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../index-2.html">Home</a> | 
+   <a href="../web/index.html">Web</a> | 
+   <a href="../math/index.html">Math</a> | 
+   <a href="../electric/index.html">Electricity</a> | 
+   <a href="../calc/index.html">Calculators</a> | 
+   <a href="../convert/index.html">Converters</a> | 
+   <a href="index.html">Tools</a> 
+   <p>© <a href="../index.html">Calculators &amp; Tools</a> | <a href="../about/about.html" rel="nofollow">About</a> | <a href="../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script>
+   var expand=false;
+   var count=document.getElementById("count");
+   var count2=document.getElementById("count2");
+   var col2div=document.getElementById("col2div");
+   var expbtn=document.getElementById("expbtn");
+   var stepdiv=document.getElementById("stepdiv");
+   var step=document.getElementById("step");
+   var clickstep=1;
+
+   window.onload=function() {
+      document.onkeypress = function(e) { 
+         if( e.code=="Space" || e.keyCode==32 ) {
+            e.preventDefault();
+            if( expand==false )
+               onAdd();
+            else {
+               if( document.activeElement===count )
+                  onAdd();
+               if( document.activeElement===count2 )
+                  onAdd2();
+            }
+         }
+      };
+   };
+   function onAdd()
+   {
+      var num=parseInt(count.value);
+      num+=clickstep;
+      count.value=num;
+   }
+   function onAdd2()
+   {
+      var num=parseInt(count2.value);
+      num+=clickstep;
+      count2.value=num;
+   }
+   function onRemove()
+   {
+      var num=parseInt(count.value);
+      num-=clickstep;
+      count.value=num;
+   }
+   function onRemove2()
+   {
+      var num=parseInt(count2.value);
+      num-=clickstep;
+      count2.value=num;
+   }
+   function onExpand()
+   {
+      expbtn.blur();
+      if( expand==false ) {
+         expand=true;
+         expbtn.innerHTML = "Less <span>&laquo;</span>";
+         col2div.style.display="block";
+         expbtn.title="Less";
+      }
+      else {
+         expand=false;
+         expbtn.innerHTML = "More <span>&raquo;</span>";
+         col2div.style.display="none";
+         expbtn.title="More";
+      }
+   }
+   function onOptions() {
+      stepdiv.classList.toggle("d-none");
+   }
+   function onStep() {
+      clickstep=parseInt(step.value);
+   }
+</script>  
+ </body>
+</html>

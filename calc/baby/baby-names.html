@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>List names baby</title> 
+  <link rel="stylesheet" type="text/css" href="/assets/1.10.13/css/jquery.dataTables.min.css"> 
+  <style>
+
+
+	#tbl tr td { text-align:center; }
+	#wrapper th { 
+		background:transparent;
+		background-image:url(../../../cdn.datatables.net/1.10.13/images/sort_asc.png);
+		background-repeat:no-repeat;
+		background-position:center right;
+	}
+	@media (max-width:800px) {
+		#tbl { width:100%; }
+	}
+	@media (min-width:801px) {
+		#datadiv { padding-right:20px; }
+	}
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Baby calculators</a>› Baby names 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Baby names list</h1> 
+     <br> 
+     <div id="datadiv"> 
+      <table id="tbl" class="display"></table> 
+     </div> 
+     <br> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>BABY TOOLS</h5> 
+    <ul> 
+     <li><a href="baby-names.html">Baby names</a></li> 
+     <li><a href="boy-names.html">Boy names</a></li> 
+     <li><a href="girl-names.html">Girl names</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="/assets/jquery-1.12.4.js"></script> 
+  <script src="/assets/1.10.13/js/jquery.dataTables.min.js"></script> 
+  <script>
+	var baby=[];
+	$( document ).ready(function() {
+		$.ajax({
+		  url: "yob2015.txt",
+		})
+		.done(function( data ) {
+			var lines = data.split("\n");
+			var offset=18994;
+			var ngirls=offset-1;
+			var nboys=lines.length-ngirls-1;
+			var name1,name2;
+			var n=Math.min(nboys,ngirls);
+			for(var i=0; i<n-1; i++) {
+				name1=name2="";
+				if( i<nboys )
+					name1 = lines[i+ngirls].split(",")[0];
+				if( i<ngirls )
+					name2 = lines[i].split(",")[0];
+				baby[i]=[];
+				baby[i] = [i+1, name1, name2];
+			}
+			$('#tbl').DataTable( {
+			    data: baby,
+			    columns: [
+			        { title: "Rank #", "width": "20%" },
+			        { title: "Boy Name" },
+			        { title: "Girl Name" }
+			    ]
+			} );
+		});
+	});
+</script>  
+ </body>
+</html>

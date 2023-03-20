@@ -1,0 +1,445 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Calculator exponents</title> 
+  <meta name="description" content="Exponents calculator with steps and negative exponents."> 
+  <link href="/assets/npm/bootstrap%405.2.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   :root { scroll-behavior:unset; }
+   .btn span { font-weight:bold; font-size:large; }
+   #calcform .btn-group a { text-decoration:none; }
+   #calcform,#calcform0,#calcform2 { padding:20px; background:#eee8d5; max-width:500px; border-radius:7px; }
+   #pf0,#pf1,#y5div { display:none; }
+   #TA1 {
+      font-size:large;
+      font-family:"Times New Roman", Times, serif;
+   }
+   .fraction {
+      display: inline-block;
+      position: relative;
+      vertical-align: middle; 
+      letter-spacing: 0.001em;
+      text-align: center;
+      /*font-size: 12px;*/
+   }
+   .fraction > span { display: block; padding: 0.1em; }
+   .fraction span.fdn { border-top: 2px solid black; }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Math Calculators</a>› 
+    <a href="exponent-calculator.html">Exponent calculator</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1 id="exp">Exponents Calculator</h1> 
+     <form id="calcform0" autocomplete="off"> 
+      <div> 
+       <div class="col-sm-9 btn-group"> 
+        <a href="exponent-calculator.html" id="fm1" class="btn btn-outline-success fw-semibold text-decoration-none active">Exponent calculator</a> 
+        <a href="Log_Calculator.html" id="fm2" class="btn btn-outline-success fw-semibold text-decoration-none">Logarithm calculator</a> 
+       </div> 
+      </div> 
+     </form> 
+     <p><a href="../../math/number/exponent.html">Exponents</a> calculator with negative numbers and steps.</p> 
+     <form id="calcform" name="calcform" autocomplete="off"> 
+      <table> 
+       <tbody> 
+        <tr> 
+         <td><label for="x1">Enter<br>Base</label></td> 
+         <td><label for="x2">Enter<br>Exponent</label></td> 
+         <td>&nbsp;</td> 
+        </tr> 
+        <tr> 
+         <td style="width:150px; vertical-align:bottom;"><input type="text" id="x1" name="x1" class="form-control form-control-lg"></td> 
+         <td style="width:150px; padding-bottom:20px;"><input type="text" id="x2" name="x2" class="form-control form-control-lg"></td> 
+         <td>&nbsp;</td> 
+        </tr> 
+       </tbody> 
+      </table> 
+      <div class="mt-4"> 
+       <button type="submit" title="Calculate" class="btn btn-success"><span>=</span> Calculate</button> 
+       <button type="reset" title="Reset" class="btn btn-secondary" onclick="resetb()"><span>×</span> Reset</button> 
+      </div> 
+      <div id="pf0" class="mt-3"> 
+       <label for="y" class="form-label">Result</label> 
+       <input type="text" id="y" class="form-control form-control-lg" readonly> 
+      </div> 
+      <div id="pf1" class="mt-3"> 
+       <label for="TA1" class="form-label">Calculation</label> 
+       <textarea rows="3" id="TA1" class="form-control" readonly></textarea> 
+      </div> 
+     </form> 
+     <p>* Use e for scientific notation. E.g: 5e3, 4e-8, 1.45e12</p> 
+     <p>** To find the exponent from the base and the exponentation result, use logarithm calculator:</p> 
+     <p>Expression with base^exponent:</p> 
+     <form id="calcform2" autocomplete="off"> 
+      <div> 
+       <label for="s" class="form-label">Expression</label> 
+       <input type="text" id="s" name="s" value="2^3+2^4" class="form-control form-control-lg"> 
+      </div> 
+      <div class="mt-3"> 
+       <button type="submit" title="Calculate" class="btn btn-success"><span>=</span> Calculate</button> 
+       <button type="reset" title="Reset" class="btn btn-secondary"><span>×</span> Reset</button> 
+      </div> 
+      <div id="y5div" class="mt-3"> 
+       <label for="y5" class="form-label">Result</label> 
+       <input type="text" id="y5" class="form-control form-control-lg" readonly> 
+      </div> 
+     </form> 
+     <br> 
+     <ul class="seealso"> 
+      <li><a href="Log_Calculator.html">Logarithm calculator</a></li> 
+     </ul> 
+     <br> 
+     <h2>Exponent calculation examples</h2> 
+     <p><a href="exponent-calculator37ea.html?x1=2&amp;x2=5">2<sup>5</sup> = ?</a> , <a href="exponent-calculator7b9e.html?x1=2&amp;x2=-5">2<sup>-5</sup> = ?</a> , <a href="exponent-calculator13a7.html?x1=-2&amp;x2=5">-2<sup>5</sup> = ?</a> , <a href="exponent-calculator2773.html?x1=-2&amp;x2=-5">-2<sup>-5</sup> = ?</a></p> 
+     <h2>Exponents laws and rules</h2> 
+     <p>The <a href="../../math/number/exponent.html">exponent</a> formula is:</p> 
+     <p class="math"><i>a<sup><span style="font-size: 0.8em"> </span>n</sup></i> = <i>a</i>×<i>a</i>×<i>...</i>×<i>a</i></p> 
+     <p style="margin-left:80px; margin-top:-15px;">n times</p> 
+     <p>The base a is raised to the power of n, is equal to n times multiplication of a.</p> 
+     <p>For example:</p> 
+     <p class="math">2<sup>5</sup> = 2×2×2×2×2 = 32</p> 
+     <h5>Multiplying exponents</h5> 
+     <p class="math"><i>a</i><sup><i>n</i> </sup>⋅ <i>a</i><sup><i>m</i> </sup>= <i>a</i><sup><i>n</i>+<i>m</i></sup></p> 
+     <p class="mathsymbol">Example: 2<sup>3 </sup>⋅ 2<sup>4 </sup>= 2<sup>(3+4) </sup>= 2<sup>7 </sup>= 128</p> 
+     <p>&nbsp;</p> 
+     <p class="math"><i>a</i><sup><i>n</i> </sup>⋅ <i>b<sup>n</sup></i><sup> </sup>= (<i>a </i>⋅<i> b</i>)<sup><i> n</i></sup></p> 
+     <p class="mathsymbol">Example: 3<sup>2 </sup>⋅ 4<sup>2 </sup>= (3⋅4)<sup>2 </sup>= 12<sup>2 </sup>= 144</p> 
+     <p>&nbsp;</p> 
+     <h5>Dividing exponents</h5> 
+     <div class="math"> 
+      <div class="fraction"> 
+       <span class="fup"><i>a</i><sup><i>n</i></sup></span> 
+       <span class="fdn"><i>a</i><sup><i>m</i></sup></span> 
+      </div> = 
+      <i>a</i> 
+      <sup><i>n</i>-<i>m</i></sup> 
+     </div> 
+     <div class="mathsymbol">
+       Example: 
+      <div class="fraction"> 
+       <span class="fup">2<sup>5</sup></span> 
+       <span class="fdn">2<sup>3</sup></span> 
+      </div> = 2 
+      <sup>(5-3)</sup> = 2 
+      <sup>2</sup> = 4 
+     </div> 
+     <p>&nbsp;</p> 
+     <div class="math"> 
+      <div class="fraction"> 
+       <span class="fup"><i>a</i><sup><i>n</i></sup></span> 
+       <span class="fdn"><i>b<sup>n</sup></i></span> 
+      </div> = ( 
+      <i>a</i>/ 
+      <i>b</i>) 
+      <sup><i>n</i></sup> 
+     </div> 
+     <div class="mathsymbol">
+       Example: 
+      <div class="fraction"> 
+       <span class="fup">8<sup>2</sup></span> 
+       <span class="fdn">2<sup>2</sup></span> 
+      </div> = (8/2) 
+      <sup>2</sup> = 4 
+      <sup>2</sup> = 16 
+     </div> 
+     <p>&nbsp;</p> 
+     <h5>Power of exponent</h5> 
+     <p class="math">(<i>a</i><sup><i>n</i></sup>)<sup><i>m</i> </sup>= <i>a</i><sup><i>n</i>⋅<i>m</i></sup></p> 
+     <p class="mathsymbol">Example: (2<sup>3</sup>)<sup>4 </sup>= 2<sup>(3 ⋅ 4) </sup>= 2<sup>12 </sup>= 4096</p> 
+     <p>&nbsp;</p> 
+     <h5>Radical of exponent</h5> 
+     <p class="math"><sup><i>m</i></sup>√(<i>a</i><sup><i>n</i></sup>) = <i>a</i><sup><i>n</i>/<i>m</i></sup></p> 
+     <p class="mathsymbol">Example: <sup>2</sup>√(2<sup>6</sup>) = 2<sup>(6 / 2) </sup>= 2<sup>3 </sup>= 8</p> 
+     <p>&nbsp;</p> 
+     <h5>Negative exponent</h5> 
+     <div class="math"> 
+      <i>a</i> 
+      <sup> <i>-n</i></sup> = 
+      <div class="fraction"> 
+       <span class="fup">1</span> 
+       <span class="fdn"><i>a</i><sup><i> n</i></sup></span> 
+      </div> 
+     </div> 
+     <div class="mathsymbol">
+       Example: 2 
+      <sup>-3</sup> = 
+      <div class="fraction"> 
+       <span class="fup">1</span> 
+       <span class="fdn">2<sup>3</sup></span> 
+      </div> = 
+      <div class="fraction"> 
+       <span class="fup">1</span> 
+       <span class="fdn">8</span> 
+      </div> = 0.125 
+     </div> 
+     <p>&nbsp;</p> 
+     <h5>Zero exponent</h5> 
+     <p class="math"><i>a</i><sup><i> </i>0 </sup>= 1</p> 
+     <p class="mathsymbol">Example: 4<sup>0 </sup>= 1</p> 
+     <p>&nbsp;</p> 
+     <p>See: <a href="../../math/number/exponent.html">exponents rules</a></p> 
+     <p>&nbsp;</p> 
+     <p><a href="Log_Calculator.html">Logarithm calculator ►</a></p> 
+     <p>&nbsp;</p> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="../../math/number/exponent.html">Exponents rules</a></li> 
+      <li><a href="exponential-growth-calculator.html">Exponential growth calculator</a></li> 
+      <li><a href="anti-log-calculator.html">Antilog calculator</a></li> 
+      <li><a href="Log_Calculator.html">Logarithm calculator</a></li> 
+      <li><a href="scientific-notation-calculator.html">Scientific notation calculator</a></li> 
+      <li><a href="root-calculator.html">Root calculator</a></li> 
+      <li><a href="square-root-calculator.html">Square root calculator</a></li> 
+      <li><a href="../electric/power-calculator.html">Electric power calculator</a></li> 
+      <li><a href="../../math/algebra/Logarithm.html">Logarithm</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>MATH CALCULATORS</h5> 
+    <ul> 
+     <li><a href="calculator.html">Online math calculator</a></li> 
+     <li><a href="adding-fractions-calculator.html">Adding fractions calculator</a></li> 
+     <li><a href="Add_Calculator.html">Addition calculator</a></li> 
+     <li><a href="anti-log-calculator.html">Antilog calculator</a></li> 
+     <li><a href="Arccos_Calculator.html">Arccos calculator</a></li> 
+     <li><a href="Arcsin_Calculator.html">Arcsin calculator</a></li> 
+     <li><a href="Arctan_Calculator.html">Arctan calculator</a></li> 
+     <li><a href="base-calculator.html">Base calculator</a></li> 
+     <li><a href="complex-calculator.html">Complex numbers calculator</a></li> 
+     <li><a href="convolution-calculator.html">Convolution calculator</a></li> 
+     <li><a href="Cos_Calculator.html">Cosine calculator</a></li> 
+     <li><a href="dividing-fractions-calculator.html">Dividing fractions calculator</a></li> 
+     <li><a href="division-calculator.html">Division calculator</a></li> 
+     <li><a href="exponential-growth-calculator.html">Exponential growth calculator</a></li> 
+     <li><a href="exponent-calculator.html">Exponents calculator</a></li> 
+     <li><a href="Factorial_Calculator.html">Factorial calculator</a></li> 
+     <li><a href="fractions-calculator.html">Fractions calculator</a></li> 
+     <li><a href="gcf-calculator.html">GCF calculator</a></li> 
+     <li><a href="lcm-calculator.html">LCM calculator</a></li> 
+     <li><a href="Ln_Calc.html">Ln calculator</a></li> 
+     <li><a href="Log_Calculator.html">Log calculator</a></li> 
+     <li><a href="multiplication-calculator.html">Multiplication calculator</a></li> 
+     <li><a href="multiplying-fractions-calculator.html">Multiplying fractions calculator</a></li> 
+     <li><a href="Percentage_Calculator.html">Percentage calculator</a></li> 
+     <li><a href="percentage-change-calculator.html">Percentage change calculator</a></li> 
+     <li><a href="percent-error-calculator.html">Percent error calculator</a></li> 
+     <li><a href="percentage-increase-calculator.html">Percentage increase calculator</a></li> 
+     <li><a href="pythagorean-calculator.html">Pythagorean theorem calculator</a></li> 
+     <li><a href="Quadratic_Calculator.html">Quadratic equation solver</a></li> 
+     <li><a href="random-number-generator.html">Random number generator</a></li> 
+     <li><a href="ratio-calculator.html">Ratio calculator</a></li> 
+     <li><a href="root-calculator.html">Root calculator</a></li> 
+     <li><a href="scientific-notation-calculator.html">Scientific notation calculator</a></li> 
+     <li><a href="simple-calculator.html">Simple math calculator</a></li> 
+     <li><a href="fraction-simplifier.html">Fraction simplifier</a></li> 
+     <li><a href="Sin_Calculator.html">Sine calculator</a></li> 
+     <li><a href="square-root-calculator.html">Square root calculator</a></li> 
+     <li><a href="standard-deviation-calculator.html">Standard deviation calculator</a></li> 
+     <li><a href="subtracting-fractions-calculator.html">Subtracting fractions calculator</a></li> 
+     <li><a href="subtraction-calculator.html">Subtraction calculator</a></li> 
+     <li><a href="Tan_Calculator.html">Tangent calculator</a></li> 
+     <li><a href="trigonometry-calculator.html">Trigonometry calculator</a></li> 
+     <li><a href="weighted-average-calculator.html">Weighted average calculator</a></li> 
+     <li><a href="variance-calculator.html">Variance calculator</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../calc2.js"></script> 
+  <script src="/assets/ajax/libs/mathjs/11.4.0/math.js" referrerpolicy="no-referrer"></script> 
+  <script>
+   var x1elem=document.getElementById("x1");
+   var x2elem=document.getElementById("x2");
+   var yelem=document.getElementById("y");
+   var taelem=document.getElementById("TA1");
+   var pf0elem=document.getElementById("pf0");
+   var pf1elem=document.getElementById("pf1");
+   var selem=document.getElementById("s");
+   var y5elem=document.getElementById("y5");
+   window.addEventListener("DOMContentLoaded",function() {
+      math.config({
+         number: 'BigNumber',
+         precision: 64
+      });
+      //document.getElementById("calcform").onkeypress = function(e) { if( e.keyCode==13 ) OnCalc(); };
+      var params=GetURLParams();
+      if( (typeof params.x1!="undefined")&&(typeof params.x2!="undefined") ) {
+         window.location.hash = "";
+         window.location.hash = "#calcform";
+         var el=document.querySelector("h1");
+         el.innerHTML = params.x1+" raised to the power of "+params.x2+" calculation";
+         document.title = params.x1+" raised to the power of "+params.x2+" calculation";
+         //SetLinks(params);
+         x1elem.value = decodeURIComponent2(params.x1);
+         x2elem.value = decodeURIComponent2(params.x2);
+         OnCalc();
+      }
+      else if( typeof params.s!="undefined" ) {
+         window.location.hash = "";
+         window.location.hash = "#calcform2";
+         selem.value = decodeURIComponent2(params.s);
+         OnCalc2();
+      }
+   });
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function resetb()
+   {
+      x1elem.focus();
+      x1elem.style.backgroundColor = "white";
+      x2elem.style.backgroundColor = "white";
+   }
+   function OnCalc()
+   {
+      var b = str2num2(x1elem.value);
+      var e = str2num2(x2elem.value);
+      x1elem.style.backgroundColor = "white";
+      x2elem.style.backgroundColor = "white";
+      if( b=="" ) {
+         yelem.value = "";
+         x1elem.style.backgroundColor = "#fff0f0";
+         return;
+      }
+      if( e=="" ) {
+         yelem.value = "";
+         x2elem.style.backgroundColor = "#fff0f0";
+         return;
+      }
+      var x="("+b+")^("+e+")";
+      var y=math.evaluate(x);
+      y=math.format(y, {precision: 8});
+      yelem.value = num2str2(y);
+      pf0elem.style.display="block";
+
+      if( b.indexOf("i")!=-1 || e.indexOf("i")!=-1 ) return;
+      b=math.evaluate(b);
+      e=math.evaluate(e);
+      ee = e.toString();
+      len = ee.length;
+      p='';
+      for(i=0; i<len; i++) 
+      {
+         d = ee.charCodeAt(i)-0x30;
+         if( ee.charCodeAt(i)==0x2e )
+            code = 0xb7;
+         else if( d==1 )
+            code = 0xb9;
+         else if( d>1 && d<4 )
+            code = (d+0xb0);
+         else
+            code = (d+0x2070);
+         p+=String.fromCharCode(code);
+      }
+      sb = b.toString();
+      if( b<0 ) sb = '('+b+')';
+      //var sb = '('+b+')';
+      out = sb;
+      if( e<0 ) out += String.fromCharCode(8315);
+      out += p;
+      out += ' = ';
+      if( e<0 )
+      {
+         out += '1/index.html';
+         out += sb;
+         out += p;
+         out += ' = ';
+      }
+
+      abse = Math.abs(e);
+      if( abse>=2 && abse<=30 && (abse==Math.floor(abse)) ) 
+      {
+         if( e<0 ) out+='1/(';
+         for(i=0; i<abse; i++) 
+         {
+            if( b<0 ) out+='(';
+            out+=b;
+            if( b<0 ) out+=')';
+            if( i<abse-1 ) out+=String.fromCharCode(215);
+         }
+         if( e<0 ) out+=')';
+         out += ' = ';
+      }
+      out += y;
+      taelem.value = out;
+      pf1elem.style.display="block";
+   }
+   function OnCalc2() {
+      var x=str2num2(selem.value);
+      var y=math.evaluate(x);
+      y=math.format(y, {precision: 8});
+      document.getElementById("y5").value = num2str2(y); //roundnum2(y,8);
+      document.getElementById("y5div").style.display="block";
+   }
+</script>  
+ </body>
+</html>

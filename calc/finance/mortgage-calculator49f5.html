@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <script>
+   var deskAdsNum=0;
+</script> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Calculator mortgage</title> 
+  <meta content="Simple home mortgage calculator online." name="description"> 
+  <link href="/assets/npm/bootstrap%405.2.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   .adslot_1 { display:none; }
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   :root { scroll-behavior:unset; }
+   #wrapper td { padding:.75rem; }
+   #calcform {
+      padding:15px;
+      background:#eee8d5;
+      border:1px solid #eee;
+      border-radius:7px;
+      max-width:500px;
+   }
+   .btn i { vertical-align:middle; }
+   .btn span { font-weight:bold; font-size:large; }
+   .input-group-append, .input-group-text{ background:#fff; }
+   .btn-outline-secondary { border:1px solid #ced4da; }
+   #tbl td { padding-left:30px; background:#fff; }
+   /*#calcform div:nth-child(n+3):nth-child(-n+4) { display:none; }*/
+   #calcform div:nth-child(6) { display:none; }
+   #calcform div:nth-child(n+13) { display:none; }
+   @media all and (max-width: 700px) {
+      /*#Select2, #Select3, #Select4 { margin-left:5px; margin-right:5px; }*/
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Finance</a>› 
+    <a href="mortgage-calculator.html">Mortgage calculator</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Mortgage Calculator</h1> 
+     <form id="calcform" name="calcform" action="https://rapid-tables.com/calc/finance/mortgage-calculator.html"> 
+      <div class="input-group btn-group mb-3" role="group" aria-label="Basic radio toggle button group"> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel1" value="0" checked> 
+       <label title="Dollar" class="btn btn-outline-success fw-semibold" for="cursel1" onclick="OnCurSel(0)">$</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel2" value="1"> 
+       <label title="Euro" class="btn btn-outline-success fw-semibold" for="cursel2" onclick="OnCurSel(1)">€</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel3" value="2"> 
+       <label title="Pound" class="btn btn-outline-success fw-semibold" for="cursel3" onclick="OnCurSel(2)">£</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel4" value="3"> 
+       <label title="Yen/Yuan" class="btn btn-outline-success fw-semibold" for="cursel4" onclick="OnCurSel(3)">¥</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel5" value="4"> 
+       <label title="Rupee" class="btn btn-outline-success fw-semibold" for="cursel5" onclick="OnCurSel(4)">₹</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel6" value="5"> 
+       <label title="Peso" class="btn btn-outline-success fw-semibold" for="cursel6" onclick="OnCurSel(5)">₱</label> 
+       <input type="radio" class="btn-check" name="cursel" id="cursel7" value="6"> 
+       <label title="Other" class="btn btn-outline-success fw-semibold" for="cursel7" onclick="OnCurSel(6)">&nbsp;</label> 
+      </div> 
+      <div class="mb-3"> 
+       <label for="calcsel1" class="form-label">I want to calculate</label> 
+       <div class="input-group btn-group" role="group"> 
+        <input type="radio" class="btn-check" name="calcsel" id="calcsel1" value="0" checked> 
+        <label class="btn btn-outline-success fw-semibold" for="calcsel1" onclick="OnCalcSel(0,1)">Monthly payment</label> 
+        <input type="radio" class="btn-check" name="calcsel" id="calcsel2" value="1"> 
+        <label class="btn btn-outline-success fw-semibold" for="calcsel2" onclick="OnCalcSel(1,1)">Loan amount</label> 
+        <input type="radio" class="btn-check" name="calcsel" id="calcsel3" value="2"> 
+        <label class="btn btn-outline-success fw-semibold" for="calcsel3" onclick="OnCalcSel(2,1)">Loan term</label> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="hpin" class="form-label">Home price</label> 
+       <div class="input-group"> 
+        <span class="input-group-text cur">$</span> 
+        <input type="number" min="0" step="1" id="hpin" name="hpin" value="400000" placeholder="400000" class="form-control" oninput="OnHomePrice()"> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="dpin" class="form-label">Down payment</label> 
+       <div class="row g-2"> 
+        <div class="col-sm-8"> 
+         <div class="input-group"> 
+          <span class="input-group-text cur">$</span> 
+          <input type="number" min="0" step="1" id="dpin" name="dpin" value="100000" placeholder="100000" class="form-control" oninput="OnDP()"> 
+         </div> 
+        </div> 
+        <div class="col-sm-4"> 
+         <div class="input-group"> 
+          <input type="number" min="0" step="1" id="dpperin" name="dpperin" value="25" placeholder="25" class="form-control" oninput="OnDPPercent()"> 
+          <span class="input-group-text">%</span> 
+         </div> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="lain" class="form-label">Loan amount</label> 
+       <div class="input-group"> 
+        <span class="input-group-text cur">$</span> 
+        <input type="number" min="0" step="1" id="lain" name="lain" value="300000" placeholder="300000" class="form-control" oninput="OnPV()"> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="mpin" class="form-label">Monthly payment</label> 
+       <div class="input-group"> 
+        <span class="input-group-text cur">$</span> 
+        <input type="number" id="mpin" name="mpin" class="form-control" value="2000" placeholder="2000" oninput="OnMPChange()"> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="irin" class="form-label">Annual interest rate (%)</label> 
+       <div class="input-group"> 
+        <input type="number" min="0" step=".01" id="irin" name="irin" class="form-control" value="5.0" placeholder="5.0"> 
+        <span class="input-group-text">%</span> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label for="ltin" class="form-label">Loan term</label> 
+       <div class="input-group"> 
+        <input type="number" min="1" step="1" id="ltin" name="ltin" class="form-control" value="20" placeholder="20"> 
+        <select id="ltselin" class="form-select" style="max-width:160px;"> <option>Years</option> <option>Months</option> </select> 
+       </div> 
+      </div> 
+      <div id="btns" class="mb-3 mt-4 divs"> 
+       <button type="submit" class="btn btn-success"><span>=</span> Calculate</button> 
+       <button type="reset" onclick="OnReset()" class="btn btn-secondary"><span>×</span> Reset</button> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Monthly payment</label> 
+       <div class="input-group input-group-lg"> 
+        <span class="input-group-text fw-semibold cur">$</span> 
+        <input type="text" id="mpout" class="form-control fw-semibold" readonly> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Loan amount</label> 
+       <div class="input-group input-group-lg"> 
+        <span class="input-group-text fw-semibold cur">$</span> 
+        <input type="text" id="laout" class="form-control fw-semibold" readonly> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Loan term in years</label> 
+       <div class="input-group input-group-lg"> 
+        <input type="text" id="ltout" class="form-control fw-semibold" readonly> 
+        <span class="input-group-text">Years</span> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Loan term in months</label> 
+       <div class="input-group input-group-lg"> 
+        <input type="text" id="ltmout" class="form-control fw-semibold" readonly> 
+        <span class="input-group-text">Months</span> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Loan to value ratio</label> 
+       <div class="input-group input-group-lg"> 
+        <input type="text" id="ltvout" class="form-control fw-semibold" readonly> 
+        <span class="input-group-text fw-semibold">%</span> 
+       </div> 
+      </div> 
+      <div class="mb-3 divs"> 
+       <label class="form-label">Total payments</label> 
+       <div class="input-group input-group-lg"> 
+        <span class="input-group-text fw-semibold cur">$</span> 
+        <input type="text" id="tpout" class="form-control fw-semibold" readonly> 
+       </div> 
+      </div> 
+      <div class="mb-3"> 
+       <label class="form-label">Total payments</label> 
+       <div id="piechart" style="width:100%; height: 200px;"></div> 
+      </div> 
+      <div class="mb-3"> 
+       <label class="form-label">Future values by time</label> 
+       <div id="columnchart" style="width:100%; height: 200px;"></div> 
+      </div> 
+      <div id="tbldiv" class="mb-3"> 
+       <label class="form-label">Compound interest table</label> 
+       <table class="table" id="tbl"> 
+        <tbody> 
+         <tr> 
+          <th>Period<br>No.</th> 
+          <th>Payment</th> 
+          <th>Balance</th> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div id="sharediv" class="row ms-0 me-0"> 
+       <button id="sharebtn" type="button" title="Share" onclick="OnShare()" class="btn btn-success col"><img src="../../lib/icons/material/svg/share_white_24dp.svg" loading="lazy" width="24" height="24" alt=""> Share</button> 
+      </div> 
+     </form> 
+     <p>* Actual results may change with different plans and parameters. Mortgage calculator is for educational purposes only.</p> 
+     <p>Get answers to these questions:</p> 
+     <ul> 
+      <li><a href="mortgage-calculator374e.html?calcsel=0">I know the loan amount and monthly payment. What will be the loan term?</a></li> 
+      <li><a href="mortgage-calculator49f5.html?calcsel=1">I know the monthly payment and loan term. What will be the loan amount?</a></li> 
+      <li><a href="mortgage-calculator3f6a.html?calcsel=2">I know the loan amount and loan term. What will be the monthly payment?</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+     <h2>Mortgage calculation</h2> 
+     <p>Mortgage loan monthly payment calculation:</p> 
+     <p><img src="mortgage/mortgage-formula.svg" width="188" height="51" loading="lazy" alt="mortgage formula"></p> 
+     <p>A is the monthly payment amount.</p> 
+     <p>P is the loan amount or principal amount.</p> 
+     <p>r is the (annual interest rate)/12.</p> 
+     <p>n is the number of monthly payments to return the loan.</p> 
+     <h4>Example</h4> 
+     <p>Calculate the monthly payment of $500,000 loan, interest rate of 5% and loan term of 20 years:</p> 
+     <p>Solution:</p> 
+     <p class="mathsymbol"><i>r</i> = 5% / 12 = 0.4166667% = 0.004166667</p> 
+     <p class="mathsymbol"><i>n</i> = 20<sub>(years)</sub> × 12<sub>(months/year)</sub> = 240<sub>(months)</sub></p> 
+     <p class="mathsymbol"><i>A</i> = $500000 × (0.004166667×(1+0.004166667)<sup>240</sup>) / ((1+0.004166667)<sup>240</sup>-1) = $3300</p> 
+     <br> 
+     <p><a href="compound-interest-calculator.html">Compound interest calculator ►</a></p> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="compound-interest-calculator.html">Compound interest calculator</a></li> 
+      <li><a href="compound-interest-formula.html">Compound interest formula</a></li> 
+      <li><a href="effective-interest-rate-calculator.html">Effective interest rate calculator</a></li> 
+      <li><a href="simple-interest-calculator.html">Simple interest calculator</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>FINANCIAL CALCULATORS</h5> 
+    <ul> 
+     <li><a href="mortgage-calculator.html">Mortgage calculator</a></li> 
+     <li><a href="gst-calculator.html">GST calculator</a></li> 
+     <li><a href="compound-interest-calculator.html">Compound interest calculator</a></li> 
+     <li><a href="effective-interest-rate-calculator.html">Effective interest rate calculator</a></li> 
+     <li><a href="simple-interest-calculator.html">Simple interest calculator</a></li> 
+     <li><a href="vat-calculator.html">VAT calculator</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../calc2.js"></script> 
+  <script src="/assets/charts/loader.js"></script> 
+  <script>
+   "use strict"
+   var hpElem = document.getElementById("hpin");
+   var dpElem = document.getElementById("dpin");
+   var dpperElem = document.getElementById("dpperin");
+   var pvElem = document.getElementById("lain");
+   var mpElem = document.getElementById("mpin");
+   var rateElem = document.getElementById("irin");
+   var nyElem = document.getElementById("ltin");
+   var nyselElem = document.getElementById("ltselin");
+   var ltvElem = document.getElementById("ltvout");
+   var tpElem = document.getElementById("tpout");
+   var sharedivElem = document.getElementById("sharediv");
+   var cursel=0;
+   var calcsel=0;
+   var pamount,intamount;
+   window.addEventListener("DOMContentLoaded",function() {
+      //OnCalcSel(0);
+      //if( Object.keys(params).length>0 ) {
+      var params=GetURLParams();
+      if( window.location.href.indexOf("?")!=-1 ) {
+         for(const p in params) {
+            if( p=="cursel" )
+               cursel=params[p];
+            else if( p=="calcsel" )
+               calcsel=params[p];
+            else
+               document.getElementById(p).value=decodeURIComponent2(params[p]);
+         }
+         OnCalc();
+         window.location.hash = "";
+         window.location.hash = "#btns";
+         OnCurSel(cursel);
+         OnCalcSel(calcsel,0);
+      }
+   });
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function OnCurSel(i)
+   {
+      var j,d;
+      cursel=i;
+      var o=document.getElementsByName("cursel");
+      o[i].checked=true;
+      var c=["$","&euro;","&pound;","&yen;","&#8377;","&#8369;"," "][i];
+      var d = document.getElementsByClassName('cur');
+      for(var k=0; k<d.length; k++)
+         d[k].innerHTML=c;
+   }
+   function OnCalcSel(i,rst)
+   {
+      calcsel=i;
+      var divs=[[1,1,1,0,1,1,1,1,0,0,1,1,1],[0,0,0,1,1,1,1,0,1,0,1,0,1],[1,1,1,1,1,0,1,0,0,1,1,1,1]];
+      var d = document.getElementsByClassName('divs');
+      var len=divs[i].length;
+      for(var k=0; k<len; k++) {
+         if( divs[i][k] ) d[k].style.display="block"; else d[k].style.display="none";
+      }
+      var o=document.getElementsByName("calcsel");
+      o[i].checked=true;
+      if( rst ) {
+         document.getElementById("mpout").value="";
+         document.getElementById("laout").value="";
+         document.getElementById("ltout").value="";
+         document.getElementById("ltmout").value="";
+         ltvElem.value="";
+         tpElem.value="";
+      }
+   }
+   function OnHomePrice()
+   {
+      var dpper=100.0*dpElem.value/hpElem.value;
+      var pv=hpElem.value-dpElem.value;
+      dpperElem.value=dpper.toFixed(0);
+      pvElem.value=pv.toFixed(0);
+   }
+   function OnDP()
+   {
+      var dpper=100.0*dpElem.value/hpElem.value;
+      var pv=hpElem.value-dpElem.value;
+      dpperElem.value=dpper.toFixed(0);
+      pvElem.value=pv.toFixed(0);
+   }
+   function OnDPPercent()
+   {
+      var price=hpElem.value;
+      var percent=dpperElem.value;
+      dpElem.value=(percent*price/100.0).toFixed(0);
+      pvElem.value=(price-dpElem.value).toFixed(0);
+   }
+   function OnPV()
+   {
+      var dp=hpElem.value-pvElem.value;
+      if( dp>=0 ) {
+         var dpper=100.0*dp/hpElem.value;
+         dpElem.value=dp.toFixed(0);
+         dpperElem.value=dpper.toFixed(0);
+      }
+      else
+         hpElem.value=parseFloat(dpElem.value)+parseFloat(pvElem.value);
+   }
+   function DrawTable(v,pay,ratio)
+   {
+      var c_look=['$','&pound;','&euro;','&#3647;','kr','L','t','&#8369;','R','R$','RM','R','Rs','&#8362;','z&#322;',''];
+      var i = document.getElementById("Select1").selectedIndex;
+      var c = c_look[i];
+      var value,p,n,f;
+      $("#tbl").find("tr:gt(0)").remove();
+      n = v.length;
+      for(var i=0; i<n; i++) {
+         p=0;
+         f=(i+1)/ratio;
+         //if( (i>0) && (f==Math.round(f)) )
+         if( f==Math.round(f) )
+            p=pay;
+         p = num2str(p);
+         value = num2str(v[i],2);
+         $('#tbl tr').eq(i).after("<tr>\
+            <td>"+i+"</td>\
+            <td>"+c+p+"</td>\
+            <td>"+c+value+"</td>\
+         </tr>");
+      }
+      $(".calc tr:nth-child(n+12)").show();
+      $("#tbldiv").show();
+   }
+   /*
+   function numberWithCommas(x)
+   {
+      return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+   }
+   */
+   function PayCalc(p,r,n)
+   {
+      r=r/1200.0;
+      //n=n*12;
+      var x=Math.pow((1.0+r),n);
+      var a=p*r*x/(x-1.0);
+      return a;
+   }
+   function PVCalc(a,r,n)
+   {
+      r=r/1200.0;
+      //n=n*12;
+      var x=Math.pow((1.0+r),n);
+      var p=a*(x-1)/(r*x);
+      return p;
+   }
+   function TermCalc(p,a,r)
+   {
+      r=r/1200.0;
+      var x=a/(a-p*r);
+      if(x<0) return(-1);
+      var n=Math.log(x)/Math.log(1.0+r);
+      //return (n/12);
+      return n;
+   }
+   function OnReset()
+   {
+      mpElem.style.backgroundColor = "#ffffff";
+   }
+   function OnMPChange()
+   {
+      mpElem.style.backgroundColor = "#ffffff";
+   }
+   function OnCalc()
+   {
+      var homeprice = hpElem.value;
+      var downpay = dpElem.value;
+      var pv = pvElem.value;
+      var mp = mpElem.value;
+      var rate = rateElem.value;
+      var ny = nyElem.value;
+      var nsel = nyselElem.selectedIndex;
+      if( pv=='' ) pv='300000';
+      if( mp=='' ) mp='2000';
+      if( rate=='' ) rate='5';
+      if( ny=='' ) ny='20';
+      homeprice = str2num(homeprice);
+      downpay = str2num(downpay);
+      pv = str2num(pv);
+      mp = str2num(mp);
+      rate = str2num(rate);
+      ny = str2num(ny);
+      if( nsel==0 ) ny*=12;
+      var y;
+      if( calcsel==0 ) {
+         y=PayCalc(pv,rate,ny);
+         document.getElementById("mpout").value=num2str(y,0);
+         document.getElementById("ltmout").value=ny;
+         pamount=pv; intamount=y*ny-pv;
+      }
+      else if( calcsel==1 ) {
+         y=PVCalc(mp,rate,ny);
+         document.getElementById("laout").value=num2str(y,0);
+         document.getElementById("ltmout").value=ny;
+         pamount=y; intamount=mp*ny-y;
+      }
+      else {
+         y=TermCalc(pv,mp,rate);
+         if( y<=0 ) {
+            //y="monthly payment < interest amount";
+            document.getElementById("ltout").value="Infinity";
+            mpElem.style.backgroundColor = "#ffe0e0";
+            return;
+         }
+         mpElem.style.backgroundColor = "#ffffff";
+         pamount=pv; intamount=y*mp-pv;
+         document.getElementById("ltout").value=(y/12).toFixed(1);
+         document.getElementById("ltmout").value=Math.ceil(y);
+      }
+      ltvElem.value=(100.0*(pamount/homeprice)).toFixed(0);
+      tpElem.value=num2str((pamount+intamount).toFixed(0));
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+      var d=document.querySelector("#calcform>div:nth-child(15)");
+      d.style.display="block";
+      d=document.querySelector("#calcform>div:nth-child(16)");
+      d.style.display="block";
+      sharedivElem.style.display="block";
+      /*
+      var d=document.querySelectorAll("#calcform>div:nth-child(n+15)");
+      for(var i=0; i<d.length; i++)
+         d[i].style.display="block";
+      */
+      //DrawTable(v,x1,f2);
+   }
+   function drawChart()
+   {
+      var data = google.visualization.arrayToDataTable([
+         ['Name', 'Amount'],
+         ['Principal amount', pamount],
+         ['Interest amount',  intamount]
+      ]);
+      var options = {is3D: true};
+      var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      chart.draw(data, options);
+   }
+   function OnShare()
+   {
+      if( navigator.canShare ) {
+         navigator.share({
+            title: document.title,
+            url: window.location.href
+         })
+         .then(() => console.log('Share was successful.'))
+         .catch((error) => console.log('Sharing failed', error));
+      } else {
+         console.log(`Your system doesn't support sharing files.`);
+      }
+   }
+</script>  
+ </body>
+</html>

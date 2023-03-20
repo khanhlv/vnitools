@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Converter m) to (ft+in meters to inches+feet</title> 
+  <meta name="description" content="Feet+inches (ft+in) to meters (m) conversion calculator and how to convert."> 
+  <link rel="stylesheet" href="/assets/bootstrap/4.5.0/css/bootstrap.min.css"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #calcform {
+      padding:15px;
+      background:#eee8d5;
+      border:1px solid #eee;
+      border-radius:7px;
+      max-width:500px;
+   }
+   .col { padding-left:0; }
+   .btn i { vertical-align:middle; }
+   .btn span { font-weight:bold; font-size:large; }
+   .btn img { filter: invert(1); }
+   .ntable td:nth-child(1), .ntable td:nth-child(2) { width:100px }
+@media all and (max-width: 575px) {
+   #calcform>div:nth-child(1)>label { display:none; }
+   #calcform>div:nth-child(3)>label { display:none; }
+}
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Conversion</a>› 
+    <a href="index.html">Length conversion</a>› 
+    <a href="feet-inch-to-meter.html">Feet+inches to meters</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Feet+Inches to Meters Conversion</h1> 
+     <form id="calcform" name="calcform" autocomplete="off"> 
+      <div id="unitnav" class="form-row"> 
+       <label class="col-sm-3 col-form-label">&nbsp;</label> 
+       <div class="form-group col"> 
+        <label for="unit1">From</label> 
+        <select id="unit1" class="form-control"> <option value="mm">Millimeter (mm)</option> <option value="cm">Centimeter (cm)</option> <option value="meter">Meter (m)</option> <option value="km">Kilometer (km)</option> <option value="inch">Inch (in)</option> <option value="feet">Foot (ft)</option> <option value="feet-inch" selected>Feet+Inches (ft+in)</option> <option value="yard">Yard (yd)</option> <option value="mile">Mile (mi)</option> </select> 
+       </div> 
+       <div class="form-group col"> 
+        <label for="unit2">To</label> 
+        <select id="unit2" class="form-control"> <option value="mm">Millimeter (mm)</option> <option value="cm">Centimeter (cm)</option> <option value="meter" selected>Meter (m)</option> <option value="km">Kilometer (km)</option> <option value="inch">Inch (in)</option> <option value="feet">Foot (ft)</option> <option value="feet-inch">Feet+Inches (ft+in)</option> <option value="yard">Yard (yd)</option> <option value="mile">Mile (mi)</option> </select> 
+       </div> 
+      </div> 
+      <div class="form-group row"> 
+       <label for="m2" class="col-sm-3 col-form-label">Feet+inches</label> 
+       <div class="input-group col-sm-9"> 
+        <input type="number" min="0" step="any" id="ft" name="ft" class="form-control"> 
+        <div class="input-group-append mr-2"> 
+         <span class="input-group-text">ft</span> 
+        </div> 
+        <input type="number" min="0" step="any" id="inch" name="inch" class="form-control"> 
+        <div class="input-group-append"> 
+         <span class="input-group-text">in</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group row"> 
+       <label class="col-sm-3 col-form-label">&nbsp;</label> 
+       <div class="col-sm-9"> 
+        <button type="button" id="calc" title="Convert" class="btn btn-success" onclick="calc0()"><span>=</span> Convert</button> 
+        <button type="reset" id="reset" title="Reset" class="btn btn-secondary"><span>×</span> Reset</button> 
+        <button type="button" title="Swap conversion" class="btn btn-secondary" onclick="location.href='meter-to-feet-inch.html';"><span>⇅</span> Swap</button> 
+       </div> 
+      </div> 
+      <div class="form-group row"> 
+       <label for="m1" class="col-sm-3 col-form-label">Meters</label> 
+       <div class="input-group col-sm-9"> 
+        <input type="number" id="m1" class="form-control" readonly> 
+        <div class="input-group-append"> 
+         <span class="input-group-text">m</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group row"> 
+       <label for="m2" class="col-sm-3 col-form-label">Meters+cm</label> 
+       <div class="input-group col-sm-9"> 
+        <input type="text" id="m2" readonly class="form-control"> 
+        <div class="input-group-append mr-2"> 
+         <span class="input-group-text">m</span> 
+        </div> 
+        <input type="text" id="cm2" readonly class="form-control"> 
+        <div class="input-group-append"> 
+         <span class="input-group-text">cm</span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group row"> 
+       <label for="TA" class="col-sm-3 col-form-label">Calculation</label> 
+       <div class="col-sm-9"> 
+        <textarea id="TA" rows="2" class="form-control" readonly></textarea> 
+       </div> 
+      </div> 
+     </form> 
+     <p><a href="meter-to-feet-inch.html">Meters to feet+inches ►</a></p> 
+     <div id="adngin-bottom_01-0"></div> 
+     <h2 id="how">How to convert feet+inches to meters</h2> 
+     <p>1 foot is equal to 0.3048 meters:</p> 
+     <p class="math">1 ft = 0.3048 m</p> 
+     <p>1 inch is equal to 0.0254 meters:</p> 
+     <p class="math">1 in = 0.0254 m</p> 
+     <p>The distance <em>d</em> in meters (m) is equal to the distance <i>d</i> in feet (ft) times 0.3048 plus the distance <i>d</i> in inches (in) times 0.0254:</p> 
+     <p class="math"><em>d</em><sub>(m)</sub> = <em>d</em><sub>(ft)</sub> × 0.3048 + <em>d</em><sub>(in)</sub> × 0.0254</p> 
+     <h4>Example</h4> 
+     <p>Convert 2 feet + 3 inches to meters:</p> 
+     <p class="math"><em>d</em><sub>(m)</sub> = 2ft × 0.3048 + 3in × 0.0254 = 0.6858m</p> 
+     <h2 id="table">Feet+inches to meters conversion table</h2> 
+     <table class="ntable"> 
+      <thead> 
+       <tr> 
+        <th colspan="2">Feet (ft) + Inches (in)</th> 
+        <th>Meters (m)</th> 
+       </tr> 
+      </thead> 
+      <tbody> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>0 in</td> 
+        <td>0 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>1 in</td> 
+        <td>0.0254 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>2 in</td> 
+        <td>0.0508 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>3 in</td> 
+        <td>0.0762 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>4 in</td> 
+        <td>0.1016 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>5 in</td> 
+        <td>0.1270 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>6 in</td> 
+        <td>0.1524 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>7 in</td> 
+        <td>0.1778 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>8 in</td> 
+        <td>0.2032 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>9 in</td> 
+        <td>0.2286 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>10 in</td> 
+        <td>0.2540 m</td> 
+       </tr> 
+       <tr> 
+        <td>0 ft</td> 
+        <td>11 in</td> 
+        <td>0.2794 m</td> 
+       </tr> 
+       <tr> 
+        <td>1 ft</td> 
+        <td>0 in</td> 
+        <td>0.3048 m</td> 
+       </tr> 
+       <tr> 
+        <td>2 ft</td> 
+        <td>0 in</td> 
+        <td>0.6096 m</td> 
+       </tr> 
+       <tr> 
+        <td>3 ft</td> 
+        <td>0 in</td> 
+        <td>0.9144 m</td> 
+       </tr> 
+       <tr> 
+        <td>4 ft</td> 
+        <td>0 in</td> 
+        <td>1.2192 m</td> 
+       </tr> 
+       <tr> 
+        <td>5 ft</td> 
+        <td>0 in</td> 
+        <td>1.5240 m</td> 
+       </tr> 
+       <tr> 
+        <td>6 ft</td> 
+        <td>0 in</td> 
+        <td>1.8288 m</td> 
+       </tr> 
+       <tr> 
+        <td>7 ft</td> 
+        <td>0 in</td> 
+        <td>2.1336 m</td> 
+       </tr> 
+       <tr> 
+        <td>8 ft</td> 
+        <td>0 in</td> 
+        <td>2.4384 m</td> 
+       </tr> 
+       <tr> 
+        <td>9 ft</td> 
+        <td>0 in</td> 
+        <td>2.7432 m</td> 
+       </tr> 
+       <tr> 
+        <td>10 ft</td> 
+        <td>0 in</td> 
+        <td>3.0480 m</td> 
+       </tr> 
+       <tr> 
+        <td>20 ft</td> 
+        <td>0 in</td> 
+        <td>6.0960 m</td> 
+       </tr> 
+       <tr> 
+        <td>30 ft</td> 
+        <td>0 in</td> 
+        <td>9.1440 m</td> 
+       </tr> 
+       <tr> 
+        <td>40 ft</td> 
+        <td>0 in</td> 
+        <td>12.1920 m</td> 
+       </tr> 
+       <tr> 
+        <td>50 ft</td> 
+        <td>0 in</td> 
+        <td>15.2400 m</td> 
+       </tr> 
+       <tr> 
+        <td>60 ft</td> 
+        <td>0 in</td> 
+        <td>18.2880 m</td> 
+       </tr> 
+       <tr> 
+        <td>70 ft</td> 
+        <td>0 in</td> 
+        <td>21.3360 m</td> 
+       </tr> 
+       <tr> 
+        <td>80 ft</td> 
+        <td>0 in</td> 
+        <td>24.3840 m</td> 
+       </tr> 
+       <tr> 
+        <td>90 ft</td> 
+        <td>0 in</td> 
+        <td>27.4320 m</td> 
+       </tr> 
+       <tr> 
+        <td>100 ft</td> 
+        <td>0 in</td> 
+        <td>30.4800 m</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>&nbsp;</p> 
+     <p><a href="meter-to-feet-inch.html">Meters to feet+inches ►</a></p> 
+     <p>&nbsp;</p> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="meter-to-feet-inch.html">Meters to feet+inches</a></li> 
+      <li><a href="feet-inch-to-cm.html">Feet+inches to cm</a></li> 
+      <li><a href="feet-inch-to-mm.html">Feet+inches to mm</a></li> 
+      <li><a href="../../calc/body/bmi-calculator.html">BMI calculator</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>LENGTH CONVERSION</h5> 
+    <ul> 
+     <li><a href="cm-to-feet.html">cm to feet</a></li> 
+     <li><a href="cm-to-feet-inch.html">cm to feet+inches</a></li> 
+     <li><a href="cm-to-inch.html">cm to inches</a></li> 
+     <li><a href="cm-to-mm.html">cm to mm</a></li> 
+     <li><a href="feet-to-cm.html">Feet to cm</a></li> 
+     <li><a href="feet-to-mm.html">Feet to mm</a></li> 
+     <li><a href="feet-to-inch.html">Feet to inches</a></li> 
+     <li><a href="feet-to-meter.html">Feet to meters</a></li> 
+     <li><a href="feet-inch-to-cm.html">Feet+inches to cm</a></li> 
+     <li><a href="feet-inch-to-meter.html">Feet+inches to meters</a></li> 
+     <li><a href="feet-inch-to-mm.html">Feet+inches to mm</a></li> 
+     <li><a href="height-converter.html">Height converter</a></li> 
+     <li><a href="inch-to-cm.html">Inches to cm</a></li> 
+     <li><a href="inch-to-feet.html">Inches to feet</a></li> 
+     <li><a href="inch-to-meter.html">Inches to meters</a></li> 
+     <li><a href="inch-to-mm.html">Inches to mm</a></li> 
+     <li><a href="km-to-mile.html">km to miles</a></li> 
+     <li><a href="meter-to-feet.html">Meters to feet</a></li> 
+     <li><a href="meter-to-feet-inch.html">Meters to feet+inches</a></li> 
+     <li><a href="meter-to-inch.html">Meters to inches</a></li> 
+     <li><a href="mile-to-km.html">Miles to km</a></li> 
+     <li><a href="mm-to-cm.html">mm to cm</a></li> 
+     <li><a href="mm-to-feet.html">mm to feet</a></li> 
+     <li><a href="mm-to-feet-inch.html">mm to feet+inches</a></li> 
+     <li><a href="mm-to-inch.html">mm to inches</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../../calc/index.html">Calculators</a> | 
+   <a href="../index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script async src="unitnav.js"></script> 
+  <script src="../convert.js"></script> 
+  <script>
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function calc0() {
+      var ft = document.getElementById("ft").value;
+      var inch = document.getElementById("inch").value;
+      if( ft=="" ) ft="0";
+      if( inch=="" ) inch="0";
+      ft = parseFloat(ft);
+      inch = parseFloat(inch);
+      var inch2 = 12*ft+inch;
+      var m1 = roundresult(0.0254*inch2);
+      var m2 = Math.floor(m1);
+      var cm2 = roundresult((m1-m2)*100);
+      var txt=ft+"ft \u00D7 0.3048 + "+inch+"in \u00D7 0.0254\n";
+      txt+="= "+m1+'m';
+      document.getElementById("m1").value = m1;
+      document.getElementById("m2").value = m2;
+      document.getElementById("cm2").value = cm2;
+      document.getElementById("TA").value = txt;
+   }
+</script>  
+ </body>
+</html>

@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <script>
+   var rtads=window.innerWidth<980?[]:["right_sidebar"];
+   var rtlots=window.innerWidth<980?[]:[{placement: "adngin-right_sidebar-0", adUnit: "right_sidebar" }];      
+</script> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Calculator scientific</title> 
+  <meta name="description" content="Scientific calculator online with fraction."> 
+  <link href="/assets/npm/bootstrap%405.2.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <link rel="stylesheet" href="/assets/ajax/libs/mathquill/0.10.1/mathquill.min.css" referrerpolicy="no-referrer"> 
+  <style>
+   body { margin:0; overflow-x:hidden; }
+   #header { background:#333; color:#eee; }
+   #header a { color:#eee; }
+   #header img { filter:invert(1); }
+   #header>div { width:1000px; }
+   #logo>p>a { color:#ccc; }
+   #___gcse_0>div { border-color:#333; }
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   .disableSelect{
+      -webkit-touch-callout:none;
+      -webkit-user-select:none;
+      -khtml-user-select:none;
+      -moz-user-select:none;
+      -ms-user-select:none;
+      user-select:none;
+      outline:0;
+   }
+   #list { transition:0.3s height; overflow-y:auto; margin-top:10px; height:173px; border:1px #ccc solid; }
+   .line { position:relative; width:100%; }
+   .line:hover { background:#f8f8f8; }
+   .calctxt { border:0; }
+   .calcresult { font-size:x-large; }
+   .calcbtndiv { display:none; width:unset; position:absolute; bottom:0; right:0; /*font-size:xx-large !important; font-family:Arial, Helvetica, sans-serif;*/ }
+   .line:hover .calcbtndiv { display:block; }
+   #delbtn { border-left:0px; color:rgba(0,0,0,.2); border:1px solid gray; border-left:0; }
+   #delbtn:hover { color:rgba(0,0,0,.5) }
+   .calcbtn>img { filter: opacity(.4); }
+   .calcbtn:hover>img { filter: opacity(.6); }
+   .calcbtndiv>select, .calcbtndiv>button { color:#aaa; }
+   .calcbtndiv>select:hover, .calcbtndiv>button:hover { color:#666; }
+   .input-group>.form-control { width:100px; display:inline-block; }
+   .input-group>.form-select { width:100px; }
+   #calcinput { height:unset; display:flex; flex-direction:row-reverse; align-items:start; justify-content:start; }
+   .mq-root-block { padding:6px 2px 0px 2px !important; }
+   .mq-math-mode {
+      color:#212529;
+      font-size:1.5rem;
+      font-size:x-large;
+      font-family:inherit;
+      display:flex;
+      align-items:center;
+   }
+   .mq-math-mode .mq-fraction { vertical-align:-0.53em !important; }
+   .mq-binary-operator { padding:0.1em !important; }
+   /*.mq-fraction,.mq-denominator { padding:unset !important; }*/
+   .mq-denominator { padding:unset !important; }
+   .mq-numerator { padding:0.1em !important; }
+   .mq-sqrt-prefix { font-family: Georgia, 'Times New Roman', Times, serif; }
+   /*.mq-sqrt-stem { margin-top:5px !important; margin-left:-5px !important; }*/
+   /*sup.mq-nthroot { vertical-align:.6em !important; }*/
+   .mq-nthroot { padding-top:.4em !important; }
+   .keyhide {
+      bottom:-252px !important;
+      transition:0.3s bottom;
+   }
+   /*#inputdiv { transition:0.5s bottom; position:fixed; bottom:200px; }*/
+   #keyboard { z-index:20; transition:0.3s bottom; position:fixed; left:0; bottom:0; background:#dcd8c8; width:100%; padding-left:5px; padding-top:2px; padding-bottom:2px; }
+   #keydiv { max-width:1000px; margin:0 auto; }
+   #keyboard table { margin:0; border-collapse:collapse; background:#bcb8a8; }
+   #keyboard td { padding:1px; }
+   #keyboard button { font-size:x-large; /*font-weight:500;*/ height:40px; width:58px; min-width:50px; padding:2px 16px; border-radius:2px; }
+   #keyboard button:active { font-size:1.4em; }
+   #keyboard button img { margin-bottom:7px; }
+   #keyboard .btn-light:hover { background-color: #e8e9ea; border-color: #e8e9ea; }
+   #keyboard .digit { background:#e8e8e8; }
+   #keyboard .digit:hover { background:#d8d8d8; }
+   #keyboard #closebtn { position:absolute; top:0; right:0; }
+   .sunkbtn { box-shadow:1px 1px 2px #888 inset !important; background:#e8e9ea !important; }
+   .large { font-size:large !important; padding:2px 8px !important; }
+   .math { font-family:"Times New Roman" !important; }
+   .sqrtline { border-top:1px #000 solid; /*text-decoration:overline; vertical-align:-20%; margin-left:-3px;*/ }
+   .fs-m { font-size:medium; }
+   .fw-500 { font-weight:500; }
+   .fw-600 { font-weight:600; }
+   @media all and (min-width: 801px) {
+      #keyboard button { width:60px; }
+   }
+   @media all and (max-width: 800px) {
+      #list { /*max-height:30vh;*/ height:143px; }
+      #keyboard { width:100%; padding-left:2px; }
+      #keyboard button { height:48px; }
+      #closebtn { display:none; }
+   }
+
+   .top, .bottom { padding:0 5px; font-size:12px; }
+   .fraction { display: inline-block; text-align: center; font-size:small; }
+   .top { margin-bottom:1px; line-height:1.7; }
+   .bottom { border-bottom: 1px solid #000; display: block; }
+   .flipv {
+      -moz-transform: scale(1, -1);
+      -webkit-transform: scale(1, -1);
+      -o-transform: scale(1, -1);
+      -ms-transform: scale(1, -1);
+      transform: scale(1, -1);
+   }
+   .fliph {
+      -moz-transform: scale(-1, 1);
+      -webkit-transform: scale(-1, 1);
+      -o-transform: scale(-1, 1);
+      -ms-transform: scale(-1, 1);
+      transform: scale(-1, 1);
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Math</a>› 
+    <a href="calculator.html">Scientific calculator</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <div id="list" class="disableSelect"> 
+     </div> 
+     <div id="inputdiv" class="input-group mt-2"> 
+      <div id="calcinput" class="form-control form-control-lg" style="border-right:0px"></div> 
+      <button type="button" id="delbtn" class="btn btn-white btn-lg fw-bolder fs-3">×</button> 
+      <button type="button" id="enterbtn" class="btn btn-success btn-lg"><img src="../../lib/icons/material/svg/subdirectory_arrow_left_white_24dp.svg" alt="Enter"></button> 
+     </div> 
+     <br> 
+     <h2>Add to Home Screen</h2> 
+     <p>To quickly open this page:</p> 
+     <ul> 
+      <li>Windows Chrome: on top right click More &gt; More Tools &gt; Create shortcut</li> 
+      <li>iOS/iPhone: on bottom click Share &gt; Add to Home Screen</li> 
+      <li>Anroid: on top right click Menu &gt; Add to Home Screen</li> 
+     </ul> 
+     <h2>Calculation examples</h2> 
+     <ul> 
+      <li><a href="calculatoref0e.html?q=1%2B1">Addition: 1+1 = ?</a></li> 
+      <li><a href="calculatore167.html?q=10%2D1">Subtraction: 10-1 = ?</a></li> 
+      <li><a href="calculator8789.html?q=5%2A6">Multiplication: 5×6 = ?</a></li> 
+      <li><a href="calculator6286.html?q=5%2F6">Division: 5/6 = ?</a></li> 
+      <li><a href="calculatoreea3.html?q=5^6">Exponentation: 5^6 = ?</a></li> 
+      <li><a href="calculator69e5.html?q=10%25*60">Percentage: 10%×60 = ?</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+     <div id="keyboard"> 
+      <div id="keydiv" class="table-responsive"> 
+       <table id="keytbl"> 
+        <tbody> 
+         <tr> 
+          <td><button type="button" class="btn btn-lg btn-light fs-5" onclick="Clear()" title="All Clear">AC</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="Undo()" title="Undo"><img src="../../lib/icons/material/svg/undo_black_24dp.svg" alt="Undo"></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="Redo()" title="Redo"><img src="../../lib/icons/material/svg/redo_black_24dp.svg" alt="Redo"></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light fliph" onclick="CLeft()">➞</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="CRight()">➞</button></td> 
+          <td><button type="button" id="backbtn" class="btn btn-lg btn-light" onclick="Backspace()"><img src="../../lib/icons/material/svg/backspace_black_24dp.svg" alt="Backspace"></button></td> 
+          <td><button type="button" id="degbtn" class="btn btn-lg btn-light px-2 fs-6 fw-500 sunkbtn" onclick="OnDeg(0)">Deg</button></td> 
+          <td><button type="button" id="radbtn" class="btn btn-lg btn-light px-2 fs-6 fw-500" onclick="OnDeg(1)">Rad</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="window.location.href='calculator-help.html'"><img src="../../lib/icons/material/svg/help_outline_black_24dp.svg" alt="Help"></button></td> 
+         </tr> 
+         <tr> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt('\\frac')"><span class="fraction"><span class="top">▅</span><span class="bottom flipv">▅</span></span></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('7')">7</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('8')">8</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('9')">9</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt('(')">(</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt(')')">)</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-2 fs-6 fw-500" onclick="AddTxt('\\sin');AddTxt('(');">sin</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-2 fs-6 fw-500" onclick="AddTxt('\\cos');AddTxt('(');">cos</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-2 fs-6 fw-500" onclick="AddTxt('\\tan');AddTxt('(');">tan</button></td> 
+         </tr> 
+         <tr> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fw-500 fs-5" onclick="AddTxt('%')">%</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('4')">4</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('5')">5</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('6')">6</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt('×')">×</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt('../../index.html')">/</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-6 fw-500" onclick="AddTxt('\\arcsin');AddTxt('(');">sin<sup>-1</sup></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-6 fw-500" onclick="AddTxt('\\arccos');AddTxt('(');">cos<sup>-1</sup></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-6 fw-500" onclick="AddTxt('\\arctan');AddTxt('(');">tan<sup>-1</sup></button></td> 
+         </tr> 
+         <tr> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-5 fw-600 math" onclick="AddTxt('^')"><i>x <sup>y</sup></i></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('1')">1</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('2')">2</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('3')">3</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light" onclick="AddTxt('+')">+</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light fw-500" onclick="AddTxt('-')">-</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-5 fw-600" onclick="AddTxt('\\nthroot')"><i><sup>n</sup></i>√<span style="margin-left:-3px">¯</span></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-6 fw-500" onclick="AddLog()">log</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-6 fw-500" onclick="AddTxt('\\ln');AddTxt('(');">ln</button></td> 
+         </tr> 
+         <tr> 
+          <td><button type="button" class="btn btn-lg btn-light px-1 fs-5" onclick="AddTxt('\\sqrt')">√<span style="margin-left:-3px">¯</span></button></td> 
+          <td><button type="button" class="btn btn-lg btn-light digit" onclick="AddTxt('0')">0</button></td> 
+          <td><button type="button" id="dpbtn" class="btn btn-lg btn-light digit" onclick="AddTxt('.')">.</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light large" onclick="AddTxt('E')">E</button></td> 
+          <td><button type="button" id="ansbtn" class="btn btn-lg btn-light large" onclick="AddTxt('ans')">Ans</button></td> 
+          <td><button type="button" id="calcbtn" class="btn btn-lg btn-success">=</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light math" onclick="AddTxt('π')">π</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light math" onclick="AddTxt('e')">e</button></td> 
+          <td><button type="button" class="btn btn-lg btn-light math" onclick="AddTxt('!')"><i>x</i>!</button></td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+     </div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>MATH CALCULATORS</h5> 
+    <ul> 
+     <li><a href="calculator.html">Scientific calculator</a></li> 
+     <li><a href="simple-calculator.html">Simple calculator</a></li> 
+     <li><a href="average-calculator.html">Average calculator</a></li> 
+     <li><a href="base-calculator.html">Base calculator</a></li> 
+     <li><a href="complex-calculator.html">Complex numbers calculator</a></li> 
+     <li><a href="fractions-calculator.html">Fractions calculator</a></li> 
+     <li><a href="Percentage_Calculator.html">Percentage calculator</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="/assets/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+  <script src="/assets/ajax/libs/mathquill/0.10.1/mathquill.min.js" referrerpolicy="no-referrer"></script> 
+  <script src="/assets/v3/polyfill.min1162.js?features=es6"></script> 
+  <script src="../calc2.js"></script> 
+  <script src="/assets/ajax/libs/mathjs/11.3.3/math.js" referrerpolicy="no-referrer"></script> 
+  <script>
+"use strict";var calc,header=document.getElementById("header"),nav=document.getElementById("nav"),body=document.getElementsByTagName("body")[0],list=document.getElementById("list"),inputdiv=document.getElementById("inputdiv"),calcElem=document.getElementById("calcinput"),keyboard=document.getElementById("keyboard"),enterbtn=document.getElementById("enterbtn"),delbtn=document.getElementById("delbtn"),dpbtn=document.getElementById("dpbtn"),calcbtn=document.getElementById("calcbtn"),degbtn=document.getElementById("degbtn"),radbtn=document.getElementById("radbtn"),MQ=MathQuill.getInterface(2),prec=16,ans="",isClick=!1,angleunit="deg",formatSem=!1,ihist=0,nhist=0,hist=[""];function GetURLParams(){for(var t,e=window.location.href,n=/[?&]([^=#]+)=([^&#]*)/g,i={};t=n.exec(e);)i[t[1]]=t[2];return i}function OnKeyHide(){calc.blur(),keyboard.classList.add("keyhide"),setListHeight(0),isClick=!1}function OnKey(t){var e=!1,n=!1,i=t.ctrlKey;void 0!==t.getModifierState&&(n=t.getModifierState("CapsLock")),t.key&&(e=t.key),console.log(e),"Shift"!=e&&"CapsLock"!=e&&("Enter"==e?OnCalc():"ArrowLeft"==e?(t.preventDefault(),CLeft()):"ArrowRight"==e?(t.preventDefault(),CRight()):"Delete"==e?(t.preventDefault(),Delete()):"Backspace"==e?t.preventDefault():"/"==e?(t.preventDefault(),AddTxt("../../index.html")):"*"==e||n&&"8"==e?(t.preventDefault(),AddTxt("\\times")):i&&"z"==e?(t.preventDefault(),Undo()):i&&"y"==e&&(t.preventDefault(),Redo()))}function Backspace(){calc.keystroke("Backspace"),calc.focus()}function CLeft(){calc.keystroke("Left"),calc.focus()}function CRight(){calc.keystroke("Right"),calc.focus()}function Delete(){calc.keystroke("Del"),calc.focus(),Snapshot()}function Clear(){confirm("Are you sure?")&&(list.innerHTML="",calc.latex(""),calc.focus())}function Undo(){if(0!=ihist){ihist==nhist&&Snapshot();var t=hist[--ihist];calc.latex(t)}}function Redo(){if(ihist!=nhist){var t=hist[++ihist];calc.latex(t)}}function Snapshot(){var t=calc.latex();hist[++ihist]=t,nhist<ihist&&(nhist=ihist),console.log(ihist+" "+nhist)}function ClearHist(){hist=[""],ihist=nhist=0}function OnDeg(t){0==t?(radbtn.classList.remove("sunkbtn"),degbtn.classList.add("sunkbtn"),angleunit="deg"):(degbtn.classList.remove("sunkbtn"),radbtn.classList.add("sunkbtn"),angleunit="rad")}function AddLog(){AddTxt("\\log"),AddTxt("_"),CRight(),AddTxt("("),CLeft(),CLeft()}function Check2Op(t){if(void 0!=t&&null!=t.match(/(\+|\-|\*|\/|\u00D7|\\times)$/)){var e=calc.latex(),n=e.match(/(\+|\-|\*|\/|\u00D7|\\times)$/);if(null!=n){var i=e.length-n[0].length;e=e.substring(0,i),calc.latex(e)}}}function AddTxt(t){Check2Op(t),Snapshot(),"/"==t?calc.write(t):calc.cmd(t),calc.focus()}function GetClosingBracket(t,e){if(e>t.length-1)return -1;var n=t[e],i="({[".indexOf(n);if(-1==i)return -1;var l=")}]"[i],c=1;for(i=e+1;i<t.length;i++)if(t[i]==n)c++;else if(t[i]==l&&0==--c)return i;retrun}function GetFrac(t){for(var e,n,i,l,c,a,s,r=1;null!=r&&null!=(r=t.match("([.0-9]+)\\\\frac"))&&-1!=(n=GetClosingBracket(t,e=r.index+r[0].length))&&-1!=(i=GetClosingBracket(t,n+1));)c=t.substring(e+1,n),a=t.substring(n+2,i),l="("+r[1]+"+("+c+")/("+a+"))",s=t.substring(r.index,i+1),t=t.replace(s,l);return t=(t=t.replace(/\\frac{/g,"(")).replace(/}{/g,")/(")}function GetSqrt(t){for(var e,n,i,l,c,a=1;null!=a&&null!=(a=t.match("\\\\sqrt\\[(.*?)\\]"))&&-1!=(n=GetClosingBracket(t,e=a.index+a[0].length));)i="nthRoot("+(l=t.substring(e+1,n))+","+a[1]+")",c=t.substring(a.index,n+1),t=t.replace(c,i);return t=t.replace(/\\sqrt{/g,"sqrt(")}function GetLog(t){for(var e,n,i,l,c,a=1;null!=a&&null!=(a=t.match("\\\\log\\\\left"))&&-1!=(n=GetClosingBracket(t,e=a.index+a[0].length));)i="log(("+(l=t.substring(e+1,n))+"),10)",c=t.substring(a.index,n+1),t=t.replace(c,i);for(a=1;null!=a&&null!=(a=t.match("\\\\log_{(.*?)}\\\\left"))&&-1!=(n=GetClosingBracket(t,e=a.index+a[0].length));)i="log(("+(l=t.substring(e+1,n))+"),"+a[1]+")",c=t.substring(a.index,n+1),t=t.replace(c,i);for(a=1;null!=a&&null!=(a=t.match("\\\\log_(.*?)\\\\left"))&&-1!=(n=GetClosingBracket(t,e=a.index+a[0].length));)i="log(("+(l=t.substring(e+1,n))+"),"+a[1]+")",c=t.substring(a.index,n+1),t=t.replace(c,i);return t}function GetLn(t){for(var e,n,i,l,c,a=1;null!=a&&null!=(a=t.match("\\\\ln\\\\left"));)n=GetClosingBracket(t,e=a.index+a[0].length),i="log(("+(l=t.substring(e+1,n))+"),e)",c=t.substring(a.index,n+1),t=t.replace(c,i);return t}function GetFunc(t,e){for(var n,i,l,c,a,s=1;null!=s&&null!=(s=t.match(e));){i=GetClosingBracket(t,n=s.index+s[0].length),c=t.substring(n+1,i);var r=s[0].substring(0,4),o=s[0].substring(0,7);"\\sin"==r?l="sin(("+c+") "+angleunit+")":"\\cos"==r?l="cos(("+c+") "+angleunit+")":"\\tan"==r?l="tan(("+c+") "+angleunit+")":"\\arcsin"==o?(l="asin("+c+")","deg"==angleunit&&(l="("+l+"*180/"+Math.PI+")")):"\\arccos"==o?(l="acos("+c+")","deg"==angleunit&&(l="("+l+"*180/"+Math.PI+")")):"\\arctan"==o&&(l="atan("+c+")","deg"==angleunit&&(l="("+l+"*180/"+Math.PI+")")),a=t.substring(s.index,i+1),t=t.replace(a,l)}return t}function GetPercent(t){var e,n,i=t.match(/[.0-9]+\\%/g);if(null!=i)for(var l=0;l<i.length;l++)n="("+(e=i[l].replace("\\%","/100"))+")",t=t.replace(i[l],n);return t}function OnCalc(){var t=calc.latex();if(""!=t){var e=t;t=GetFunc(t=GetFrac(t=GetLog(t=GetLn(t=GetSqrt(t=(t=(t=(t=(t=(t=(t=(t=(t=t.replace(/\\\s/g,"")).replace(/[’\s]/g,"")).replace(/[\u00B7\u002C]/g,".")).replace(/ans/g,ans.toString())).replace(/\\times/g,"*")).replace(/\\div/g,"../../index.html")).replace(/\\pi/g,Math.PI)).replace(/\\e/g,Math.E)).replace(/\\%/g,"%"))))),"\\\\sin\\\\left"),t=GetFunc(t,"\\\\cos\\\\left"),t=GetFunc(t,"\\\\tan\\\\left"),t=GetFunc(t,"\\\\arcsin\\\\left"),t=GetFunc(t,"\\\\arccos\\\\left"),t=(t=(t=(t=(t=GetFunc(t,"\\\\arctan\\\\left")).replace(/{/g,"(")).replace(/}/g,")")).replace(/\\left/g,"")).replace(/\\right/g,""),ans=math.evaluate(t);var n=math.format(ans,{precision:prec-1,notation:"auto",upperExp:12});AddLine(n=num2str2(n)),calc.latex(""),calc.focus(),ClearHist(),setTimeout(function(){list.scrollTop=list.scrollHeight,calc.focus(),history.pushState({q:e},e,"?q="+encodeURIComponent(e))},100)}}function AddLine(t){var e=document.createElement("div");e.innerHTML='<span class="calctxt"></span><span class="calcresult">= '+t+'</span><div class="calcbtndiv input-group"><button class="btn btn-light calcbtn fs-3"><img src="/lib/icons/material/svg/content_copy_black_24dp.svg" width="24" height="24" alt=""></button><button class="btn btn-light calcbtn fw-bold fs-3">&times;</button></div>',e.classList.add("line","form-control","form-control-lg"),list.appendChild(e),e.onclick=function(){OnLineClick(this)};var n=e.getElementsByClassName("calcbtn");n[0].onclick=function(t){OnResultCopy(t,this)},n[1].onclick=function(t){OnResultDel(t,this)};var i=e.getElementsByClassName("calctxt")[0];MQ.StaticMath(i).latex(calc.latex()),setTimeout(function(){list.scrollTo(0,list.scrollHeight)},100)}function OnResultFormat(t,e){formatSem=!0,e.selectedIndex}function OnResultCopy(t,e){var n=e.parentElement.parentElement.getElementsByClassName("calcresult")[0].innerHTML;updateClipboard(n=n.substring(2,n.length)),t.stopPropagation()}function OnResultDel(t,e){var n=e.parentElement.parentElement;n.parentElement.removeChild(n),t.stopPropagation()}function OnLineClick(t){if(formatSem){formatSem=!1;return}var e=MQ(t.firstChild).latex();calc.latex(e),calc.focus(),isClick=!0}function updateClipboard(t){navigator.clipboard.writeText(t).then(function(){},function(){})}function setListHeight(t){var e=header.getBoundingClientRect().height,n=nav.getBoundingClientRect().height,i=inputdiv.getBoundingClientRect().height,l=keyboard.getBoundingClientRect().height;0==t&&(l=0);var c=window.getComputedStyle(list).marginTop,a=window.getComputedStyle(inputdiv).marginTop;c=c.substring(0,c.length-2),a=a.substring(0,a.length-2);var s=window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight;window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth;var r=s-e-n-i-l-c-2*a;list.setAttribute("style","height:"+r+"px"),setTimeout(function(){list.scrollTo(0,list.scrollHeight)},200)}window.addEventListener("DOMContentLoaded",function(){setListHeight(1);var t=1.1.toLocaleString().substring(1,2);dpbtn.innerHTML=t,dpbtn.onclick=function(){AddTxt(t)},window.onkeydown=function(t){OnKey(t)},delbtn.onclick=function(){calc.latex(""),calc.focus(),isClick=!0,ClearHist()},enterbtn.onclick=function(){OnCalc()},calcbtn.onclick=function(){OnCalc()},body.onscroll=function(t){!1!=isClick||keyboard.classList.contains("keyhide")||OnKeyHide()},header.onclick=function(t){OnKeyHide()},nav.onclick=function(t){OnKeyHide()},calcElem.oninput=function(t){Check2Op(t.target.value),Snapshot()},calcElem.onclick=function(t){keyboard.classList.contains("keyhide")&&(isClick=!0,window.scrollTo(0,0),setTimeout(function(){setListHeight(1)},100),keyboard.classList.remove("keyhide"),calc.focus(),setTimeout(function(){isClick=!1},500))},calc=MQ.MathField(calcElem,{restrictMismatchedBrackets:!0}),"undefined"==math&&console.log("Error: math not defined!"),math.config({number:"BigNumber",precision:prec}),void 0!==window.orientation&&calcElem.getElementsByTagName("textarea")[0].setAttribute("disabled",!0);var e=GetURLParams();if(void 0!==e.q){var n=decodeURIComponent2(e.q);calc.latex(n),enterbtn.click()}calc.focus(),setTimeout(function(){calc.focus()},100)});
+</script> 
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["MathSolver", "LearningResource"],
+  "name": "Scientific calculator",
+  "url": "https://rapid-tables.com/calc/math/calculator.html",
+  "usageInfo": "https://rapid-tables.com/about/privacy.html",
+  "inLanguage": "en",
+  "potentialAction": [{
+    "@type": "SolveMathAction",
+    "target": "https://rapidtables.com/calc/math/calculator.html?q={math_expression_string}",
+    "mathExpression-input": "required name=math_expression_string",
+    "eduQuestionType": ["Math expression"]
+   }],
+  "learningResourceType": "Math solver"
+}
+</script>  
+ </body>
+</html>

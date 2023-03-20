@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <script>
+   var deskAdsNum=0;
+</script> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Stopwatch online</title> 
+  <meta content="Stopwatch time online." name="description"> 
+  <link href="/assets/npm/bootstrap%405.2.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   .adslot_2 { height:250px; }
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   #gen { max-width:600px; background:#eee8d5; padding:20px; border-radius:.25rem; }
+   #gen .btn-group a { text-decoration:none; }
+   #gen .col input[type=text] { font-weight:bold; }
+   #clearbtn span { font-size:large; font-weight:bold; }
+   .form-control:disabled { background-color:#eee8d5; border:#eee8d5; }
+   #bar { width:100%; color:green; }
+   #bar::-moz-progress-bar { background: green; }
+   #bar::-webkit-progress-value { background: green; }
+   #timediv { border:#000 1px solid; }
+   #timediv>div {  align-items:center !important; justify-content:center !important; }
+   #timediv>div>span { display:flex; align-items:flex-end; justify-content:flex-end; }
+   #timediv>div>span:nth-child(1) { font-size:7.2rem; }
+   #timediv>div>span:nth-child(2) { font-size:4rem; height:125px; }
+   @media all and (max-width: 599px) {
+      #timediv>div>span:nth-child(1) { font-size:4rem; }
+      #timediv>div>span:nth-child(2) { font-size:2rem; height:70px; }
+   }
+   @media all and (max-width: 340px) {
+      #timediv>div>span:nth-child(1) { font-size:3rem; }
+      #timediv>div>span:nth-child(2) { font-size:1.5rem; height:54px; }
+   }
+   @media all and (min-width: 600px) {
+      #gen:fullscreen { padding-top:120px; }
+      #gen:fullscreen #timediv>div>span:nth-child(1) { font-size:12rem; }
+      #gen:fullscreen #timediv>div>span:nth-child(2) { font-size:7rem; height:210px; }
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../index.html">Home</a>› 
+    <a href="index.html">Tools</a>› 
+    <a href="stopwatch.html">Stopwatch</a> 
+   </div> 
+   <div id="div-gpt-ad-1639638001114-0"> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Stopwatch</h1> 
+     <form id="gen"> 
+      <div class="input-group btn-group pl-0"> 
+       <a href="timer.html" id="fm1" class="btn btn-outline-success fw-semibold">Timer</a> 
+       <a href="#" id="fm2" class="btn btn-outline-success fw-semibold active">Stopwatch</a> 
+       <a href="clock.html" id="fm3" class="btn btn-outline-success fw-semibold">Clock</a> 
+      </div> 
+      <div id="timediv" class="mt-3"> 
+       <div id="timedivdiv" class="input-group mx-auto w-80"> 
+        <span>00:00:00</span> 
+        <span>.00</span> 
+       </div> 
+      </div> 
+      <div id="btndiv" class="mt-3 row"> 
+       <div class="col"> 
+        <button type="button" id="startbtn" title="Start" class="text-center btn btn-success btn-lg w-100"><img src="../lib/icons/material/svg/play_arrow_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+       <div class="col"> 
+        <button type="button" id="clearbtn" title="Reset" class="text-center btn btn-secondary btn-lg w-100"><img src="../lib/icons/material/svg/clear_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+      </div> 
+      <div class="mt-3"> 
+       <button type="button" id="full" onclick="OnFullscreen()" title="Fullscreen" class="btn btn-secondary btn-lg"><img src="../lib/icons/material/svg/fullscreen_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+      </div> 
+     </form> 
+     <br> 
+     <h2>How to use the stopwatch</h2> 
+     <ul> 
+      <li>The stopwatch counts hours,minutes,seconds and one-hundredths of a second.</li> 
+      <li>Press the Start/Pause button to start/pause the stopwatch count.</li> 
+      <li>Press the × Reset button to reset the stopwatch count.</li> 
+     </ul> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="timer.html">Countdown timer</a></li> 
+      <li><a href="click-counter.html">Click counter</a></li> 
+      <li><a href="click-test.html">Click speed test</a></li> 
+      <li><a href="scoreboard.html">Online scoreboard</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="click-counter.html">Click counter</a></li> 
+     <li><a href="click-test.html">Click speed test</a></li> 
+     <li><a href="line-graph.html">Line graph maker</a></li> 
+     <li><a href="notepad.html">Online Notepad</a></li> 
+     <li><a href="mirror.html">Online Mirror</a></li> 
+     <li><a href="password-generator.html">Password generator</a></li> 
+     <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     <li><a href="scatter-plot.html">Scatter plot maker</a></li> 
+     <li><a href="scoreboard.html">Online scoreboard</a></li> 
+     <li><a href="screenshot.html">Online screenshot</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../index-2.html">Home</a> | 
+   <a href="../web/index.html">Web</a> | 
+   <a href="../math/index.html">Math</a> | 
+   <a href="../electric/index.html">Electricity</a> | 
+   <a href="../calc/index.html">Calculators</a> | 
+   <a href="../convert/index.html">Converters</a> | 
+   <a href="index.html">Tools</a> 
+   <p>© <a href="../index.html">Calculators &amp; Tools</a> | <a href="../about/about.html" rel="nofollow">About</a> | <a href="../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script>
+   "use strict"
+   var expand=true;
+   var play=0;
+   var t,t2=-1,dt,tstart,tpause,tend,timer;
+   var genElem=document.getElementById("gen");
+   var fullElem=document.getElementById("full");
+   var isfullscreen=false;
+   var timediv=document.getElementById("timediv");
+   var timedivdiv=document.getElementById("timedivdiv");
+   var startbtn=document.getElementById("startbtn");
+   var clearbtn=document.getElementById("clearbtn");
+
+   window.addEventListener("DOMContentLoaded",function()
+   {
+      startbtn.onclick = function() { onStart(); }
+      clearbtn.onclick = function() { onClear(0); }
+   });
+   function OnFullscreen()
+   {
+      if( !isfullscreen ) {
+         isfullscreen=true;
+         fullElem.innerHTML="<img src='/lib/icons/material/svg/fullscreen_exit_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         FullscreenReq();
+         setTimeout(function() {
+            document.addEventListener('fullscreenchange', OnFullscreen);
+         }, 1000);
+      }
+      else {
+         isfullscreen=false;
+         fullElem.innerHTML="<img src='/lib/icons/material/svg/fullscreen_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         document.exitFullscreen();
+         document.removeEventListener('fullscreenchange', OnFullscreen);
+      }
+   }
+   function FullscreenReq()
+   {
+      if(genElem.requestFullscreen)
+         genElem.requestFullscreen();
+      else if(genElem.mozRequestFullScreen)
+         genElem.mozRequestFullScreen();
+      else if(genElem.webkitRequestFullscreen)
+         genElem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      else if(genElem.msRequestFullscreen)
+         genElem.msRequestFullscreen();
+   }
+   function onStart()
+   {
+      t = Date.now();
+      if( play==0 ) {
+         timer=setTimeout(function() { onTime(); }, 100);
+         play=1;
+         tstart = t;
+         startbtn.title="Pause";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/pause_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      else if( play==1 ) {
+         clearTimeout(timer);
+         play=2;
+         tpause = t;
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      else if( play==2 ) {
+         if( t2==-1 )
+            dt = tpause-tstart;
+         else
+            dt = tpause-t2;
+         timer=setTimeout(function() { onTime(); }, 100-dt);
+         play=1;
+         tstart+=(t-tpause);
+         startbtn.title="Pause";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/pause_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      else if( play==3 ) {
+         audio.pause();
+         play=0;
+         timedivdiv.innerHTML="<span>"+h0+":"+m0+":"+s0+"</span><span>.00</span>";
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+   }
+   function onTime()
+   {
+      t2=Date.now();
+      dt = (t2-tstart)%10;
+      timer=setTimeout(function() { onTime(); }, 10-dt);
+      dt = Math.round((t2-tstart)/10);
+      var p=dt%100;
+      dt = Math.floor(dt/100);
+      var h=Math.floor(dt/3600);
+      var m=Math.floor((dt-3600*h)/60);
+      var s=dt%60;
+      var p1=p.toString();
+      var s1=s.toString();
+      var m1=m.toString();
+      var h1=h.toString();
+      p1=(p1.length==1)?'0'+p1:p1;
+      s1=(s1.length==1)?'0'+s1:s1;
+      m1=(m1.length==1)?'0'+m1:m1;
+      h1=(h1.length==1)?'0'+h1:h1;
+      timedivdiv.innerHTML="<span>"+h1+":"+m1+":"+s1+"</span><span>."+p1+"</span>";
+      document.title=h1+":"+m1+":"+s1;
+   }
+   function onClear(n)
+   {
+      clearTimeout(timer);
+      play=false;
+      document.title="Online Stopwatch";
+      if( n==0 ) {
+         timedivdiv.innerHTML="<span>00:00:00</span><span>.00</span>";
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+   }
+</script>  
+ </body>
+</html>

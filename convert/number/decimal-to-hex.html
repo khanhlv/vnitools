@@ -1,0 +1,757 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <link rel="stylesheet" href="/assets/npm/bootstrap%404.5.3/dist/css/bootstrap.min.css"> 
+  <title>Converter hexadecimal to decimal</title> 
+  <meta name="description" content="Decimal to hex number conversion calculator and how to convert."> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #wrapper td { padding:.75rem; }
+   #calcform { max-width:500px; padding:20px; background:#f0eedc; border:1px solid #e0e0e0; border-radius:7px; } 
+   #calcform button img { filter:invert(100%); }
+   .btn span { font-weight:bold; font-size:large; }
+   #calcform .input-group sub { font-size:large; }
+   #lediv,#bediv { overflow:auto; }
+   #lediv,#bediv,#caldiv { display:none; }
+   #cal2tbl th { font-weight: normal; }
+   #cal2tbl td { line-height:1; /*background:#fff;*/ }
+   #cal2tbl th p { word-break: break-all; }
+   #cal2tbl p { line-height:1; }
+   #cal2tbl tbody tr td:nth-child(3) { background:#f8f8f8; border:dashed 1px #333; }
+   #cal { background:#e9ecef; height:auto; }
+	.ntable tr td { line-height:0.5 !important; }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Conversion</a>› 
+    <a href="index.html">Number conversion</a>› 
+    <a href="decimal-to-hex.html">Decimal to hexadecimal</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Decimal to Hexadecimal converter</h1> 
+     <form id="calcform" name="calcform" autocomplete="off"> 
+      <div id="unitnav" class="form-row"> 
+       <div class="form-group col"> 
+        <label for="unit1">From</label> 
+        <select id="unit1" class="form-control"> <option value="binary">Binary</option> <option value="decimal" selected>Decimal</option> <option value="octal">Octal</option> <option value="hex">Hexadecimal</option> <option value="ascii">Text</option> </select> 
+       </div> 
+       <div class="form-group col"> 
+        <label for="unit2">To</label> 
+        <select id="unit2" class="form-control"> <option value="binary">Binary</option> <option value="decimal">Decimal</option> <option value="octal">Octal</option> <option value="hex" selected>Hexadecimal</option> <option value="ascii">Text</option> </select> 
+       </div> 
+      </div> 
+      <div class="form-group"> 
+       <label for="x">Enter decimal number</label> 
+       <div class="input-group"> 
+        <input type="text" id="x" name="x" class="form-control form-control-lg" required autofocus> 
+        <div class="input-group-append"> 
+         <span class="input-group-text"><sub>10</sub></span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group"> 
+       <button type="button" title="Convert" class="btn btn-success" onclick="convert()"><span>=</span> Convert</button> 
+       <button type="reset" title="Reset" class="btn btn-secondary" onclick="onreset0()"><span>×</span> Reset</button> 
+       <button type="button" title="Swap conversion" class="btn btn-secondary" onclick="location.href='hex-to-decimal.html';"><span></span><span>⇅</span> Swap</button> 
+      </div> 
+      <div class="form-group"> 
+       <label for="y">Hex number</label> 
+       <div class="input-group"> 
+        <textarea rows="2" id="y" class="form-control form-control-lg" readonly></textarea> 
+        <div class="input-group-append"> 
+         <span class="input-group-text"><sub>16</sub></span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group"> 
+       <label for="y2">Hex signed 2's complement</label> 
+       <div class="input-group"> 
+        <textarea rows="2" id="y2" class="form-control form-control-lg" readonly></textarea> 
+        <div class="input-group-append"> 
+         <span class="input-group-text"><sub>16</sub></span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group"> 
+       <label for="y5">Binary number</label> 
+       <div class="input-group"> 
+        <textarea rows="2" id="y5" class="form-control form-control-lg" readonly></textarea> 
+        <div class="input-group-append"> 
+         <span class="input-group-text"><sub>2</sub></span> 
+        </div> 
+       </div> 
+      </div> 
+      <div class="form-group form-check"> 
+       <input type="checkbox" class="form-check-input" id="group" onclick="ongroup()"> 
+       <label class="form-check-label" for="group">Digit grouping</label> 
+      </div> 
+      <div id="lediv" class="form-group"> 
+       <p>Little endian</p> 
+       <div style="background:#e9ecef;"> 
+        <table id="letbl" class="table table-responsive pb-3"> 
+         <tbody> 
+          <tr> 
+           <td>Address</td> 
+          </tr> 
+          <tr> 
+           <td>Data</td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </div> 
+      <div id="bediv" class="form-group"> 
+       <p>Big endian</p> 
+       <div style="background:#e9ecef;"> 
+        <table id="betbl" class="table table-responsive pb-3"> 
+         <tbody> 
+          <tr> 
+           <td>Address</td> 
+          </tr> 
+          <tr> 
+           <td>Data</td> 
+          </tr> 
+         </tbody> 
+        </table> 
+       </div> 
+      </div> 
+      <div id="caldiv" class="form-group"> 
+       <p>Decimal to hex calculation steps</p> 
+       <div id="cal" class="form-control"> 
+        <p id="cal2dec"></p> 
+        <p>Divide by the base 16 to get the digits from the remainders:</p> 
+        <table id="cal2tbl" class="table"> 
+         <thead> 
+          <tr> 
+           <th>Division<br>by 16</th> 
+           <th>Quotient</th> 
+           <th><p>Remainder</p>(Digit)</th> 
+           <th>Digit #</th> 
+          </tr> 
+         </thead> 
+         <tbody> 
+         </tbody> 
+        </table> 
+        <p id="cal2result1"></p> 
+        <p id="cal2result2"></p> 
+       </div> 
+      </div> 
+     </form> 
+     <p id="p1"><a href="hex-to-decimal.html">Hex to decimal converter ►</a></p> 
+     <div id="adngin-bottom_01-0"></div> 
+     <h2 id="how">How to convert from decimal to hex</h2> 
+     <h4>Conversion steps:</h4> 
+     <ol> 
+      <li>Divide the number by 16.</li> 
+      <li>Get the integer quotient for the next iteration.</li> 
+      <li>Get the remainder for the hex digit.</li> 
+      <li>Repeat the steps until the quotient is equal to 0.</li> 
+     </ol> 
+     <h4>Example #1</h4> 
+     <p>Convert 7562<sub>10</sub> to hex:</p> 
+     <table class="ntable"> 
+      <tbody> 
+       <tr> 
+        <th>Division<br>by 16</th> 
+        <th>Quotient<br>(integer)</th> 
+        <th>Remainder<br>(decimal)</th> 
+        <th>Remainder<br>(hex)</th> 
+        <th>Digit #</th> 
+       </tr> 
+       <tr> 
+        <td>7562/16</td> 
+        <td>472</td> 
+        <td>10</td> 
+        <td>A</td> 
+        <td>0</td> 
+       </tr> 
+       <tr> 
+        <td>472/16</td> 
+        <td>29</td> 
+        <td>8</td> 
+        <td>8</td> 
+        <td>1</td> 
+       </tr> 
+       <tr> 
+        <td>29/16</td> 
+        <td>1</td> 
+        <td>13</td> 
+        <td>D</td> 
+        <td>2</td> 
+       </tr> 
+       <tr> 
+        <td>1/16</td> 
+        <td>0</td> 
+        <td>1</td> 
+        <td>1</td> 
+        <td>3</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>So 7562<sub>10</sub> = 1D8A<sub>16</sub></p> 
+     <h4>Example #2</h4> 
+     <p>Convert 35631<sub>10</sub> to hex:</p> 
+     <table class="ntable"> 
+      <tbody> 
+       <tr> 
+        <th>Division<br>by 16</th> 
+        <th>Quotient</th> 
+        <th>Remainder<br>(decimal)</th> 
+        <th>Remainder<br>(hex)</th> 
+        <th>Digit #</th> 
+       </tr> 
+       <tr> 
+        <td>35631/16</td> 
+        <td>2226</td> 
+        <td>15</td> 
+        <td>F</td> 
+        <td>0</td> 
+       </tr> 
+       <tr> 
+        <td>2226/16</td> 
+        <td>139</td> 
+        <td>2</td> 
+        <td>2</td> 
+        <td>1</td> 
+       </tr> 
+       <tr> 
+        <td>139/16</td> 
+        <td>8</td> 
+        <td>11</td> 
+        <td>B</td> 
+        <td>2</td> 
+       </tr> 
+       <tr> 
+        <td>8/16</td> 
+        <td>0</td> 
+        <td>8</td> 
+        <td>8</td> 
+        <td>3</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <p>So 35631<sub>10</sub> = 8B2F<sub>16</sub></p> 
+     <h2 id="table">Decimal to hex conversion table</h2> 
+     <table class="ntable"> 
+      <tbody> 
+       <tr> 
+        <th>Decimal<p>base 10</p></th> 
+        <th>Hex<p>base 16</p></th> 
+       </tr> 
+       <tr> 
+        <td>0</td> 
+        <td>0</td> 
+       </tr> 
+       <tr> 
+        <td>1</td> 
+        <td>1</td> 
+       </tr> 
+       <tr> 
+        <td>2</td> 
+        <td>2</td> 
+       </tr> 
+       <tr> 
+        <td>3</td> 
+        <td>3</td> 
+       </tr> 
+       <tr> 
+        <td>4</td> 
+        <td>4</td> 
+       </tr> 
+       <tr> 
+        <td>5</td> 
+        <td>5</td> 
+       </tr> 
+       <tr> 
+        <td>6</td> 
+        <td>6</td> 
+       </tr> 
+       <tr> 
+        <td>7</td> 
+        <td>7</td> 
+       </tr> 
+       <tr> 
+        <td>8</td> 
+        <td>8</td> 
+       </tr> 
+       <tr> 
+        <td>9</td> 
+        <td>9</td> 
+       </tr> 
+       <tr> 
+        <td>10</td> 
+        <td>A</td> 
+       </tr> 
+       <tr> 
+        <td>11</td> 
+        <td>B</td> 
+       </tr> 
+       <tr> 
+        <td>12</td> 
+        <td>C</td> 
+       </tr> 
+       <tr> 
+        <td>13</td> 
+        <td>D</td> 
+       </tr> 
+       <tr> 
+        <td>14</td> 
+        <td>E</td> 
+       </tr> 
+       <tr> 
+        <td>15</td> 
+        <td>F</td> 
+       </tr> 
+       <tr> 
+        <td>16</td> 
+        <td>10</td> 
+       </tr> 
+       <tr> 
+        <td>17</td> 
+        <td>11</td> 
+       </tr> 
+       <tr> 
+        <td>18</td> 
+        <td>12</td> 
+       </tr> 
+       <tr> 
+        <td>19</td> 
+        <td>13</td> 
+       </tr> 
+       <tr> 
+        <td>20</td> 
+        <td>14</td> 
+       </tr> 
+       <tr> 
+        <td>21</td> 
+        <td>15</td> 
+       </tr> 
+       <tr> 
+        <td>22</td> 
+        <td>16</td> 
+       </tr> 
+       <tr> 
+        <td>23</td> 
+        <td>17</td> 
+       </tr> 
+       <tr> 
+        <td>24</td> 
+        <td>18</td> 
+       </tr> 
+       <tr> 
+        <td>25</td> 
+        <td>19</td> 
+       </tr> 
+       <tr> 
+        <td>26</td> 
+        <td>1A</td> 
+       </tr> 
+       <tr> 
+        <td>27</td> 
+        <td>1B</td> 
+       </tr> 
+       <tr> 
+        <td>28</td> 
+        <td>1C</td> 
+       </tr> 
+       <tr> 
+        <td>29</td> 
+        <td>1D</td> 
+       </tr> 
+       <tr> 
+        <td>30</td> 
+        <td>1E</td> 
+       </tr> 
+       <tr> 
+        <td>40</td> 
+        <td>28</td> 
+       </tr> 
+       <tr> 
+        <td>50</td> 
+        <td>32</td> 
+       </tr> 
+       <tr> 
+        <td>60</td> 
+        <td>3C</td> 
+       </tr> 
+       <tr> 
+        <td>70</td> 
+        <td>46</td> 
+       </tr> 
+       <tr> 
+        <td>80</td> 
+        <td>50</td> 
+       </tr> 
+       <tr> 
+        <td>90</td> 
+        <td>5A</td> 
+       </tr> 
+       <tr> 
+        <td>100</td> 
+        <td>64</td> 
+       </tr> 
+       <tr> 
+        <td>200</td> 
+        <td>C8</td> 
+       </tr> 
+       <tr> 
+        <td>1000</td> 
+        <td>3E8</td> 
+       </tr> 
+       <tr> 
+        <td>2000</td> 
+        <td>7D0</td> 
+       </tr> 
+      </tbody> 
+     </table> 
+     <br> 
+     <p><a href="hex-to-decimal.html">Hex to decimal converter ►</a></p> 
+     <p>&nbsp;</p> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="hex-to-decimal.html">Hex to decimal converter</a></li> 
+      <li><a href="decimal-to-binary.html">Decimal to binary converter</a></li> 
+      <li><a href="decimal-to-octal.html">Decimal to octal converter</a></li> 
+      <li><a href="decimal-to-fraction.html">Decimal to fraction converter</a></li> 
+      <li><a href="decimal-to-percent.html">Decimal to percent converter</a></li> 
+      <li><a href="how-decimal-to-hex.html">How to convert decimal to hex</a></li> 
+      <li><a href="ascii-to-hex.html">ASCII text to hex converter</a></li> 
+      <li><a href="../color/rgb-to-hex.html">RGB to Hex color converter</a></li> 
+      <li><a href="../../math/number/Numeral_system.html">Numeral systems</a></li> 
+      <li><a href="index.html">Number conversion</a></li> 
+      <li><a href="decimal-to-hex0c3c.html?x=16">16 decimal to hex</a></li> 
+      <li><a href="decimal-to-hex311f.html?x=64">64 decimal to hex</a></li> 
+      <li><a href="decimal-to-hex8e9c.html?x=255">255 decimal to hex</a></li> 
+     </ul> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>NUMBER CONVERSION</h5> 
+    <ul> 
+     <li><a href="ascii-hex-bin-dec-converter.html">ASCII,Hex,Binary,Decimal converter</a></li> 
+     <li><a href="ascii-to-binary.html">ASCII text to binary converter</a></li> 
+     <li><a href="ascii-to-hex.html">ASCII text to hex converter</a></li> 
+     <li><a href="base-converter.html">Base converter</a></li> 
+     <li><a href="binary-converter.html">Binary converter</a></li> 
+     <li><a href="binary-to-ascii.html">Binary to ASCII text converter</a></li> 
+     <li><a href="binary-to-decimal.html">Binary to decimal converter</a></li> 
+     <li><a href="binary-to-hex.html">Binary to hex converter</a></li> 
+     <li><a href="date-to-roman-numerals.html">Date to roman numerals converter</a></li> 
+     <li><a href="decimal-to-fraction.html">Decimal to fraction converter</a></li> 
+     <li><a href="decimal-to-percent.html">Decimal to percent converter</a></li> 
+     <li><a href="decimal-to-binary.html">Decimal to binary converter</a></li> 
+     <li><a href="decimal-to-octal.html">Decimal to octal converter</a></li> 
+     <li><a href="decimal-to-hex.html">Decimal to hex converter</a></li> 
+     <li><a href="degrees-to-degrees-minutes-seconds.html">Degrees to deg,min,sec converter</a></li> 
+     <li><a href="degrees-minutes-seconds-to-degrees.html">Deg,min,sec to degrees converter</a></li> 
+     <li><a href="degrees-to-radians.html">Degrees to radians converter</a></li> 
+     <li><a href="fraction-to-decimal.html">Fraction to decimal converter</a></li> 
+     <li><a href="fraction-to-percent.html">Fraction to percent converter</a></li> 
+     <li><a href="hex-dec-bin-converter.html">Hex/decimal/octal/binary converter</a></li> 
+     <li><a href="hex-to-ascii.html">Hex to ASCII text converter</a></li> 
+     <li><a href="hex-to-binary.html">Hex to binary converter</a></li> 
+     <li><a href="hex-to-decimal.html">Hex to decimal converter</a></li> 
+     <li><a href="octal-to-decimal.html">Octal to decimal converter</a></li> 
+     <li><a href="percent-to-decimal.html">Percent to decimal converter</a></li> 
+     <li><a href="percent-to-fraction.html">Percent to fraction converter</a></li> 
+     <li><a href="Percent_to_PPM.html">Percent to ppm converter</a></li> 
+     <li><a href="PPM_to_Percent.html">ppm to percent converter</a></li> 
+     <li><a href="ppm-to-ppb.html">ppm to ppb converter</a></li> 
+     <li><a href="ppm-to-ppt.html">ppm to ppt converter</a></li> 
+     <li><a href="ppb-to-ppm.html">ppb to ppm converter</a></li> 
+     <li><a href="ppt-to-ppm.html">ppt to ppm converter</a></li> 
+     <li><a href="ppm-converter.html">ppm converter</a></li> 
+     <li><a href="radians-to-degrees.html">Radians to degrees converter</a></li> 
+     <li><a href="roman-numerals-converter.html">Roman numerals converter</a></li> 
+     <li><a href="scientific-notation-converter.html">Scientific notation converter</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../../calc/index.html">Calculators</a> | 
+   <a href="../index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="../../lib/bignumber/bignumber.min.js"></script> 
+  <script src="../convert.js"></script> 
+  <script async src="../../lib/unitnav.js"></script> 
+  <script>
+   "use strict"
+   var xelem=document.getElementById("x");
+   var ledivElm=document.getElementById("lediv");
+   var bedivElm=document.getElementById("bediv");
+   var letblElm=document.getElementById("letbl");
+   var betblElm=document.getElementById("betbl");
+   window.addEventListener("DOMContentLoaded",function() {
+		var params=GetURLParams();
+      //if( Object.keys(params).length>0 && params.x!="" ) {
+      if( typeof params.x!="undefined" ) {
+         var x2=decodeURIComponent2(params.x);
+			document.title = x2+" decimal to hex conversion";
+			SetLinks(x2);
+			xelem.value = x2;
+			convert();
+		}
+	});
+   function onreset0()
+   {
+      document.getElementById("lediv").style.display="none";
+      document.getElementById("bediv").style.display="none";
+      document.getElementById("caldiv").style.display="none";      
+   }
+   function onxclick()
+   {
+      document.getElementById("keys").style.display = "block";
+   }
+   function onxblur()
+   {
+      document.getElementById("keys").style.display = "none";
+   }
+   function addchar(c)
+   {
+      var x=xelem.value;
+      //x = x.substring(0,selectionStart+1)+c+x.substring(selectionStart+1,x.length);
+      if( c=="-" ) x=c+x;
+      if( c=="." ) x=x+c;
+      xelem.value = x;
+      xelem.focus();
+   }
+   function ongroup()
+   {
+      if( xelem.value!="" )
+         convert();
+   }
+	function SetLinks(x)
+	{
+		var p1 = document.getElementById("p1");
+		var p2 = document.createElement('p');
+		var p3 = document.createElement('p');
+		var x= new BigNumber(x, 10);
+		var x1=x.minus(1).toString(10);
+		var x2=x.plus(1).toString(10);
+		p2.innerHTML = "<a href='decimal-to-hex.html?x="+x1+"'>"+x1+" decimal to hex &#9658;</a>";
+		p3.innerHTML = "<a href='decimal-to-hex.html?x="+x2+"'>"+x2+" decimal to hex &#9658;</a>";
+		p1.parentNode.insertBefore(p2, p1);
+		p1.parentNode.insertBefore(p3, p1);
+	}
+	function GetURLParams()
+	{
+		var url=window.location.href;
+		var regex = /[?&]([^=#]+)=([^&#]*)/g,
+				//url = "www.domain.com/?v=123&p=hello",
+				params = {},
+				match;
+		while(match = regex.exec(url)) {
+			params[match[1]] = match[2];
+		}
+		return params;
+	}
+	function pad(n, width, z) {
+		z = z || '0';
+		n = n + '';
+		return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
+	}
+   function decimal2base(dec, y, b) {
+      var row;
+      var y2=null;
+      var tbl=document.getElementById("cal2tbl");
+      var len=tbl.tBodies[0].rows.length;
+      if( len ) {
+         for(var i=0; i<len; i++)
+            tbl.tBodies[0].deleteRow(0);
+      }
+      if( dec<0 ) dec=-dec;
+      dec=dec.toString();
+      y=y.toString().replace(/\s/g,'');
+      var nd=y.indexOf(".");
+      var ndigits=y.length-nd-1;
+      if( ndigits>8 ) ndigits=8;
+      var txt="";
+      if( nd>=0 ) {
+         txt="To avoid the decimal separator, multiply the decimal number with the base raised to the power of decimals in result:<br>";
+         txt+=dec+"&times;"+b+"<sup>"+ndigits+"</sup> = ";
+         dec=dec*Math.pow(b,ndigits);
+         dec=Math.round(dec);
+         txt+=dec;
+      }
+      document.getElementById("cal2dec").innerHTML=txt;
+      for(var n=dec,k=0; n>=1; k++) {
+         row = "<tr>";
+         row+="<td>("+n+")/"+b+"</td>";
+         row+="<td>"+Math.floor(n/b)+"</td>";
+         row+="<td>"+(n%b).toFixed()+"</td>";
+         row+="<td>"+k+"</td>";
+         row+="</tr>";
+         n = Math.floor(n/b);
+         var r=tbl.tBodies[0].insertRow();
+         r.innerHTML = row;
+      }
+      txt="";
+      if( nd>=0 ) {
+         y2=y.toString();
+         var n=y2.length-y2.indexOf(".")-ndigits-1;
+         y2=y2.substring(0,y2.length-n).replace(".","");
+         txt = "= ("+y2+")<sub>"+b+"</sub> / "+b+"<sup>"+ndigits+"</sup>";
+      }
+      document.getElementById("cal2result1").innerHTML=txt;
+      if( nd>=0 ) y=y.substring(0,y2.length+1);
+      txt = "= ("+y+")<sub>"+b+"</sub>";
+      document.getElementById("cal2result2").innerHTML=txt;
+      document.getElementById("caldiv").style.display="block";
+   }
+   function etbl(e,x,be)
+   {
+      var row1=e.tBodies[0].rows[0];
+      var row2=e.tBodies[0].rows[1];
+      row1.innerHTML="<td>Address</td>";
+      row2.innerHTML="<td>Data</td>";
+      x=x.replace(/\s+/g, '');
+      if( x=="" || x.indexOf(".")!=-1 ) {
+         e.parentElement.parentElement.style.display="none";
+         return;
+      }
+      var n=x.length/2;
+      if( n!=Math.floor(n) ) x="0"+x;
+      n=x.length/2;
+      for(var i=0; i<n; i++) {
+         var td1 = document.createElement('td');
+         var td2 = document.createElement('td');
+         if( be )
+            var b=x[2*i]+x[2*i+1];
+         else
+            var b=x[2*(n-i-1)]+x[2*(n-i-1)+1];
+         td1.innerHTML=i.toString();
+         td2.innerHTML=b;
+         row1.appendChild(td1);
+         row2.appendChild(td2);
+      }
+      e.parentElement.parentElement.style.display="block";
+   }
+	function convert() {
+		var dec = str2num2(document.calcform.x.value);
+		try {
+			var x = new BigNumber(dec, 10);
+			xelem.style.backgroundColor = "white";
+		}
+		catch(err) {
+			xelem.style.backgroundColor = "#fff0f0";
+			return;
+		}
+      var y = x.toString(16).toUpperCase();
+      var y5 = x.toString(2);
+      var y2;
+		var t1 = new BigNumber("-8000000000000000",16);
+		var t2 = new BigNumber("7FFFFFFFFFFFFFFF",16);
+		var t3 = new BigNumber("10000000000000000",16);
+		if( x.isInteger() && x.gte(-32768) && x.lte(32767) ) {
+			y2 = new BigNumber(x, 10);
+			if( x.lessThan(0) ) y2 = x.plus("10000",16);
+			y2 = pad(y2.toString(16).toUpperCase(), 4);
+		}
+		else if( x.isInteger() && x.gte(-2147483648) && x.lte(2147483647) ) {
+			y2 = new BigNumber(x, 10);
+			if( x.lessThan(0) ) y2 = x.plus("100000000",16);
+			y2 = pad(y2.toString(16).toUpperCase(), 8);
+		}
+		else if( x.isInteger() && x.gte(t1) && x.lte(t2) ) {
+			y2 = new BigNumber(x, 10);
+			if( x.lessThan(0) ) y2 = x.plus(t3);
+			y2 = pad(y2.toString(16).toUpperCase(), 16);
+		}
+		else {
+			y2 = "N/A";
+		}
+      if( document.getElementById('group').checked ) {
+         y = digitgroup(y,4," ");
+         y2 = digitgroup(y2,4," ");
+         y5 = digitgroup(y5,8," ");
+      }
+      decimal2base(dec,y,16);
+		document.getElementById("y").value = y;
+		document.getElementById("y2").value = y2;
+		document.getElementById("y5").value = y5;
+      var num=(x>=0)?y:y2;
+      etbl(letblElm,num,0);
+      etbl(betblElm,num,1);
+	}
+   function digitgroup(x, n, d)
+   {
+      if( x=="N/A" ) return x;
+      var x0=x.split(".")[0];
+      var x1=x.split(".")[1];
+      var y="";
+      var x0head="";
+      var re=new RegExp("(.{"+n+"})","g");
+      if( x0!="" && x0!=undefined ) {
+         if( x0[0]=="-" ) {
+            y="-";
+            x0=x0.substring(1,x0.length);
+         }
+         x0head = x0.substring(0,x0.length%n);
+         y += x0head;
+         x0 = x0.substring(x0.length%n,x0.length);
+         //x0 = x0.replace(/(.{4})/g,"$1 ");
+         x0 = x0.replace(re,"$1 ");
+         x0 = x0.substring(0,x0.length-1);
+         if( x0head!="" && x0!="" ) y+=d;
+         y += x0;
+      }
+      if( x1!="" && x1!=undefined ) {
+         y += ".";
+         //y += x1.replace(/(.{4})/g,"$1 ");
+         y += x1.replace(re,"$1 ");
+      }
+      return y;
+   }
+</script>  
+ </body>
+</html>

@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <link rel="dns-prefetch" href="http://fonts.gstatic.com/"> 
+  <link rel="dns-prefetch" href="/assets/"> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Online maker chart table</title> 
+  <meta content="Table chart maker online." name="description"> 
+  <link href="/assets/npm/bootstrap%405.1.3/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #gen { background:#eee8d5; padding:20px; max-width:650px; }
+   #gen .input-group-append input[type=text] { width:100px; }
+   #gen input[type=color] { width:70px; }
+   #table_div { overflow:auto; padding:5px; }
+   #table_div:fullscreen { padding:30px !important; }
+   #tbl { max-width:100%; };
+	.btn-group i { vertical-align:middle; }
+   .btn-group a { color:#fff; }
+   /*.nav-item:hover { background:#fff; }*/
+	.nav-link i { vertical-align:middle; }
+	@media only screen and  (max-width:600px) {
+      #doc { padding-right:0; }
+      #gen { padding:10px; }
+      .btn-group .btn { padding:0.375rem 0.60rem; }
+      #fsbtn { display:none; }
+	}
+	@media only screen and  (min-width:601px) {
+      #lcol { width:670px; }
+   }
+
+   @media print {
+      body * {
+         visibility: hidden;
+      }
+      #table_div, #table_div * {
+         /*font-size:120%;*/
+         visibility: visible;
+      }
+      #tblhead { font-size:300%; }
+      #table_div {
+         width:100%;
+         position:absolute;
+         left:0;
+         top:5%;
+         /*
+         top:50%;
+         transform: translateY(-50%);
+         */
+      }
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../index.html">Home</a>› 
+    <a href="index.html">Tools</a>› Table chart maker online 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Table Chart Maker</h1> 
+     <form id="gen" name="gen"> 
+      <ul class="nav nav-tabs"> 
+       <li class="nav-item"> <a class="nav-link" href="line-graph.html"><img src="../lib/icons/material/svg/show_chart_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Line Graph</a> </li> 
+       <li class="nav-item"> <a class="nav-link" href="bar-graph.html"><img src="../lib/icons/material/svg/bar_chart_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Bar Graph</a> </li> 
+       <li class="nav-item"> <a class="nav-link" href="pie-chart.html"><img src="../lib/icons/material/svg/pie_chart_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Pie Chart</a> </li> 
+       <li class="nav-item"> <a class="nav-link" href="scatter-plot.html"><img src="../lib/icons/material/svg/scatter_plot_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> XY Scatter Plot</a> </li> 
+       <li class="nav-item"> <a class="nav-link active" href="#"><img src="../lib/icons/material/svg/table_chart_black_24dp.svg" loading="lazy" width="24" height="24" alt=""> Table Chart</a> </li> 
+      </ul> 
+      <div class="form-group"> 
+       <div class="btn-group mt-4 ml-3 mb-3"> 
+        <button type="button" id="fsbtn" onclick="FullscreenReq()" title="Fullscreen" class="btn btn-secondary"><img src="../lib/icons/material/svg/fullscreen_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnZoomOut()" title="Zoom out" class="btn btn-secondary"><img src="../lib/icons/material/svg/zoom_out_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnZoomIn()" title="Zoom in" class="btn btn-secondary"><img src="../lib/icons/material/svg/zoom_in_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnAddRow()" title="Add row" class="btn btn-secondary"><b>+</b> Row</button> 
+        <button type="button" onclick="OnRemoveRow()" title="Remove row" class="btn btn-secondary"><b>-</b> Row</button> 
+        <button type="button" onclick="OnAddCol()" title="Add column" class="btn btn-secondary"><b>+</b> Col</button> 
+        <button type="button" onclick="OnRemoveCol()" title="Remove column" class="btn btn-secondary"><b>-</b> Col</button> 
+       </div> 
+      </div> 
+      <div id="table_div" class="form-group bg-light px-2"> 
+       <h1 id="tblhead" class="fs-4" contenteditable>List of users</h1> 
+       <table id="tbl" class="table table-default table-hover table-responsive fs-6" contenteditable> 
+        <caption>
+          * Comment 
+        </caption> 
+        <thead> 
+         <tr> 
+          <th scope="col">#</th> 
+          <th scope="col">First</th> 
+          <th scope="col">Last</th> 
+          <th scope="col">Age</th> 
+         </tr> 
+        </thead> 
+        <tbody> 
+         <tr> 
+          <th scope="row">1</th> 
+          <td>Mark</td> 
+          <td>Twain</td> 
+          <td>27</td> 
+         </tr> 
+         <tr> 
+          <th scope="row">2</th> 
+          <td>John</td> 
+          <td>Carter</td> 
+          <td>56</td> 
+         </tr> 
+         <tr> 
+          <th scope="row">3</th> 
+          <td>Frank</td> 
+          <td>Herbert</td> 
+          <td>19</td> 
+         </tr> 
+        </tbody> 
+       </table> 
+      </div> 
+      <div class="form-group"> 
+       <div class="btn-group mt-3 ml-3 mb-3"> 
+        <button type="button" onclick="OnShare()" title="Share Chart" class="btn btn-secondary"><img src="../lib/icons/material/svg/share_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnSavePNG()" title="Save PNG image to Downloads folder" class="btn btn-secondary"><img src="../lib/icons/material/svg/save_alt_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnSaveSVG()" title="Save SVG image to Downloads folder" class="btn btn-secondary"><img src="../lib/icons/material/svg/save_alt_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnCopy()" title="Copy Chart" class="btn btn-secondary"><img src="../lib/icons/material/svg/content_copy_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+        <button type="button" onclick="OnPrint()" title="Print Chart" class="btn btn-secondary"><img src="../lib/icons/material/svg/print_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+      </div> 
+      <div class="form-group form-check mt-3"> 
+       <input type="checkbox" class="form-check-input" id="rownumcheck" checked> 
+       <label class="form-check-label" for="rownumcheck">Row numbers</label> 
+      </div> 
+      <div class="form-group form-check mt-3"> 
+       <input type="checkbox" class="form-check-input" id="stripecheck"> 
+       <label class="form-check-label" for="stripecheck">Striped rows</label> 
+      </div> 
+      <div class="form-group form-check mt-3"> 
+       <input type="checkbox" class="form-check-input" id="smallcheck"> 
+       <label class="form-check-label" for="smallcheck">Small table</label> 
+      </div> 
+      <div class="form-group mt-2"> 
+       <label for="bgcolorsel" class="form-label">Background color</label> 
+       <select id="bgcolorsel" class="form-control"> <option value="table-default" selected>Default</option> <option value="table-light" class="bg-light">Light</option> <option value="table-dark" class="bg-dark text-light">Dark</option> <option value="table-primary" class="bg-primary text-light">Blue</option> <option value="table-secondary" class="bg-secondary text-light">Grey</option> <option value="table-success" class="bg-success text-light">Green</option> <option value="table-danger" class="bg-danger text-light">Red</option> <option value="table-warning" class="bg-warning">Orange</option> <option value="table-info" class="bg-info text-light">Cyan</option> </select> 
+      </div> 
+      <div class="form-group mt-2"> 
+       <label for="bdcolorsel" class="form-label">Border color/width</label> 
+       <div class="input-group"> 
+        <select id="bdcolorsel" class="form-control"> <option value="" selected>Default</option> <option value="border-light" class="bg-light">Light</option> <option value="border-dark" class="bg-dark text-light">Dark</option> <option value="border-primary" class="bg-primary text-light">Blue</option> <option value="border-secondary" class="bg-secondary text-light">Grey</option> <option value="border-success" class="bg-success text-light">Green</option> <option value="border-danger" class="bg-danger text-light">Red</option> <option value="border-warning" class="bg-warning">Orange</option> <option value="border-info" class="bg-info text-light">Cyan</option> <option value="table-borderless">None</option> </select> 
+        <select id="bdwidthsel" class="form-control"> <option value="" selected>Default</option> <option value="table-borderless">0</option> <option value="border-1">1</option> <option value="border-2">2</option> <option value="border-3">3</option> <option value="border-4">4</option> <option value="border-5">5</option> </select> 
+       </div> 
+      </div> 
+      <div class="form-group ml-0"> 
+       <div id="chart_div"></div> 
+       <div id="png"></div> 
+      </div> 
+     </form> 
+     <ul> 
+      <li>Reduce printing to save trees. Prefer to print to pdf file or create image file.</li> 
+      <li>If background color is not visible while printing, you may enable <i>Background Graphics</i> in the print dialog options (it will increase ink consumption).</li> 
+     </ul> 
+     <h2>How to create a table chart</h2> 
+     <ol> 
+      <li>Set table title.</li> 
+      <li>Set number of table columns by adding/removing columns.</li> 
+      <li>Set table header names.</li> 
+      <li>Add rows and values as needed.</li> 
+      <li>Add comments below.</li> 
+      <li>Share/Save/Print table.</li> 
+     </ol> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="line-graph.html">Line graph maker</a></li> 
+      <li><a href="scatter-plot.html">XY Scatter plot maker</a></li> 
+      <li><a href="bar-graph.html">Bar graph maker</a></li> 
+      <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="chart-maker.html">Chart online maker</a></li> 
+     <li><a href="line-graph.html">Line graph maker</a></li> 
+     <li><a href="notepad.html">Online Notepad</a></li> 
+     <li><a href="mirror.html">Online Mirror</a></li> 
+     <li><a href="password-generator.html">Password generator</a></li> 
+     <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     <li><a href="screenshot.html">Online screenshot</a></li> 
+     <li><a href="table-chart.html">Table chart maker</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../index-2.html">Home</a> | 
+   <a href="../web/index.html">Web</a> | 
+   <a href="../math/index.html">Math</a> | 
+   <a href="../electric/index.html">Electricity</a> | 
+   <a href="../calc/index.html">Calculators</a> | 
+   <a href="../convert/index.html">Converters</a> | 
+   <a href="index.html">Tools</a> 
+   <p>© <a href="../index.html">Calculators &amp; Tools</a> | <a href="../about/about.html" rel="nofollow">About</a> | <a href="../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="/assets/ajax/libs/html-to-image/1.9.0/html-to-image.min.js" referrerpolicy="no-referrer"></script> 
+  <script>
+   "use strict"
+   var tablediv = document.getElementById('table_div');
+   var tblhead = document.getElementById('tblhead');
+   var tbl = document.getElementById('tbl');
+   var rownumcheck = document.getElementById('rownumcheck');
+   //var rowselcheck = document.getElementById('rowselcheck');
+   var stripecheck = document.getElementById('stripecheck');
+   var smallcheck = document.getElementById('smallcheck');
+   var bgcolorsel = document.getElementById('bgcolorsel');
+   var bdcolorsel = document.getElementById('bdcolorsel');
+   var bdwidthsel = document.getElementById('bdwidthsel');
+   var nrow=3,ncol=3;
+   var lastclass="",lastbdcolorclass="",lastbdwidthclass="";
+   var zoomnum=6;
+   var chartdiv = document.getElementById('chart_div');
+   var imgdata;
+   var x,y,xsize,ysize,fullscreen=false;;
+
+   window.addEventListener("DOMContentLoaded",function() {
+      rownumcheck.onchange=function() { OnRowNumCheck(); };
+      //rowselcheck.onchange=function() { OnRowSelCheck(); };
+      stripecheck.onchange=function() { OnStripedCheck(); };
+      smallcheck.onchange=function() { OnSmallCheck(); };
+      bgcolorsel.onchange=function() { OnBgColorSelect(); };
+      bdcolorsel.onchange=function() { OnBorderSelect(); };
+      bdwidthsel.onchange=function() { OnBorderSelect(); };
+   });
+
+   function OnZoomOut() {
+      if( zoomnum==6 ) return;
+      if( zoomnum>2 ) {
+         tblhead.classList.remove("fs-"+(zoomnum-2));
+         tblhead.classList.add("fs-"+(zoomnum-1));
+      }
+      tbl.classList.remove("fs-"+zoomnum);
+      zoomnum++;
+      tbl.classList.add("fs-"+zoomnum);
+   }
+   function OnZoomIn() {
+      if( zoomnum==1 ) return;
+      if( zoomnum>3 ) {
+         tblhead.classList.remove("fs-"+(zoomnum-2));
+         tblhead.classList.add("fs-"+(zoomnum-3));
+      }
+      tbl.classList.remove("fs-"+zoomnum);
+      zoomnum--;
+      tbl.classList.add("fs-"+zoomnum);
+   }
+   function OnAddRow() {
+      var row = tbl.insertRow();
+      var cell = document.createElement("th");
+      row.appendChild(cell);
+      cell.innerHTML=++nrow;
+      if( !rownumcheck.checked )
+         cell.style.display="none";
+      var cols=tbl.rows[0].cells.length-1;
+      for(var i=0; i<cols; i++) {
+         cell=row.insertCell(-1);
+         if( i==0 ) cell.innerHTML="-";
+      }
+   }
+   function OnRemoveRow() {
+      if( nrow==1 ) return;
+      tbl.deleteRow(nrow--);
+   }
+   function OnAddCol() {
+      var cell = document.createElement("th");
+      tbl.rows[0].appendChild(cell);
+      cell.innerHTML="-";
+      //var rows=tbl.rows.length;
+      for(var i=1; i<nrow+1; i++)
+         tbl.rows[i].insertCell(-1);
+      ncol++;
+   }
+   function OnRemoveCol() {
+      if( ncol==1 ) return;
+      for(var i=0; i<nrow+1; i++)
+         tbl.rows[i].deleteCell(-1);
+      ncol--;
+   }
+   function OnRowNumCheck() {
+      var col = tbl.querySelectorAll('#tbl tr th:first-child');
+      col.forEach(function(o) {
+         if( rownumcheck.checked )
+            o.style.display="";
+         else
+            o.style.display="none";
+      });
+   }
+   function OnRowSelCheck() {
+      var cell = tbl.querySelector('#tbl tr th:nth-child(2)');
+      if( rowselcheck.checked )
+         cell.style.display="";
+      else
+         cell.style.display="none";
+      var col = tbl.querySelectorAll('#tbl tr td:nth-child(2)');
+      col.forEach(function(o) {
+         if( rowselcheck.checked )
+            o.style.display="";
+         else
+            o.style.display="none";
+      });
+   }
+   function OnStripedCheck() {
+      if( stripecheck.checked )
+         tbl.classList.add("table-striped");
+      else
+         tbl.classList.remove("table-striped");
+   }
+   function OnSmallCheck() {
+      if( smallcheck.checked )
+         tbl.classList.add("table-sm");
+      else
+         tbl.classList.remove("table-sm");
+   }
+   function OnBgColorSelect()
+   {
+      if( lastclass!="" ) tbl.classList.remove(lastclass);
+      lastclass=bgcolorsel.value;
+      tbl.classList.add(lastclass);
+   }
+   function OnBorderSelect()
+   {
+      if( lastbdcolorclass!="" ) tbl.classList.remove(lastbdcolorclass);
+      if( lastbdwidthclass!="" ) tbl.classList.remove(lastbdwidthclass);
+      tbl.classList.remove("table-bordered","border");
+      lastbdcolorclass=bdcolorsel.value;
+      lastbdwidthclass=bdwidthsel.value;
+      if( lastbdcolorclass!="" && lastbdwidthclass!="" &&
+          lastbdcolorclass!="table-borderless" && lastbdwidthclass!="table-borderless" )
+         tbl.classList.add("table-bordered");
+      if( lastbdcolorclass!="" )
+         tbl.classList.add(lastbdcolorclass);
+      if( lastbdwidthclass!="" ) {
+         tbl.classList.add(lastbdwidthclass);
+         tbl.classList.add("border");
+      }
+   }
+   function FullscreenReq()
+   {
+      if(tablediv.requestFullscreen)
+         tablediv.requestFullscreen();
+      else if(tablediv.mozRequestFullScreen)
+         tablediv.mozRequestFullScreen();
+      else if(tablediv.webkitRequestFullscreen)
+         tablediv.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      else if(tablediv.msRequestFullscreen)
+         tablediv.msRequestFullscreen();
+   }
+   function OnShare()
+   {
+      htmlToImage.toBlob(tablediv)
+      .then(function (blob) {
+         var title=tblhead.innerHTML;
+         var file=new File([blob], title+".png", {type: "image/png"});
+         if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            navigator.share({
+               files: [file],
+               title: title,
+               text: 'Table chart: '+title+".png",
+            })
+            .then(() => console.log('Share was successful.'))
+            .catch((error) => console.log('Sharing failed', error));
+         } else {
+            console.log(`Your system doesn't support sharing files.`);
+         }
+      });
+     /*
+      htmlToImage.toPng(tablediv)
+      .then(async function (dataUrl) {
+      })
+      .catch(function (error) {
+         console.error('oops, something went wrong!', error);
+      });
+      */
+   }
+   function OnSavePNG()
+   {
+      htmlToImage.toPng(tablediv)
+      .then(function(dataUrl) {
+         var img = new Image();
+         const a = document.createElement('a');
+         a.href=dataUrl;
+         a.download = "table-chart.png";
+         a.click();
+      })
+      .catch(function (error) {
+         console.error('oops, something went wrong!', error);
+      });
+   }
+   function OnSaveSVG()
+   {
+      function filter (node) {
+         return (node.tagName !== 'i');
+      }
+
+      htmlToImage.toSvg(tablediv, { filter: filter })
+      .then(function(dataUrl) {
+         const a = document.createElement('a');
+         a.href=dataUrl;
+         a.download = "table-chart.svg";
+         a.click();
+      });
+   }
+   function OnCopy()
+   {
+      htmlToImage.toBlob(tablediv)
+      .then(function (blob) {
+         navigator.clipboard.write([
+            new ClipboardItem({'image/png': blob})
+         ]);
+      });
+   }
+   function OnPrint()
+   {
+      window.print();
+   }
+</script>  
+ </body>
+</html>

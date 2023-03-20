@@ -1,0 +1,462 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <script>
+   var deskAdsNum=0;
+</script> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Timer online</title> 
+  <meta content="Countdown timer online." name="description"> 
+  <link href="/assets/npm/bootstrap%405.2.0/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   .adslot_2 { height:250px; }
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   #gen { max-width:600px; background:#eee8d5; padding:20px; border-radius:.25rem; }
+   #gen:fullscreen { padding:30px !important; }
+   #gen .btn-group a { text-decoration:none; }
+   #gen .col input[type=text] { font-weight:bold; }
+   #hour,#min,#sec { font-size:8rem; }
+   #clearbtn span { font-size:large; font-weight:bold; }
+   #gen .input-group-append { background:#fff; }
+   #timediv { border:2px inset; }
+   #timediv label { font-weight:bold; font-size:1.25rem; }
+   #timediv div span { font-size:6rem; padding-top:2rem; }
+   .form-control:disabled { background-color:#eee8d5; border:#eee8d5; }
+   #bar { width:100%; }
+   #bar::-moz-progress-bar { background: green; }
+   #bar::-webkit-progress-value { background: green; }
+   #bar { color: green; }
+   @media all and (max-width: 799px) {
+      #hour,#min,#sec { font-size:4rem; }
+      #timediv div span { font-size:4rem; padding-top:0.7rem; }
+   }
+   @media all and (max-width: 350px) {
+      #hour,#min,#sec { font-size:3rem; }
+      #timediv span { font-size:3rem; padding-top:1.5rem; }
+   }
+   @media all and (min-width: 800px) {
+      #gen:fullscreen #hour { font-size:12rem; }
+      #gen:fullscreen #min { font-size:12rem; }
+      #gen:fullscreen #sec { font-size:12rem; }
+      #gen:fullscreen span { padding-top:5rem; }
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../index.html">Home</a>› 
+    <a href="index.html">Tools</a>› 
+    <a href="timer.html">Countdown timer</a> 
+   </div> 
+   <div id="div-gpt-ad-1639638001114-0"> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Online Timer</h1> 
+     <form id="gen"> 
+      <div class="input-group btn-group pl-0"> 
+       <a href="#" id="fm1" class="btn btn-outline-success fw-semibold active">Timer</a> 
+       <a href="stopwatch.html" id="fm2" class="btn btn-outline-success fw-semibold">Stopwatch</a> 
+       <a href="clock.html" id="fm3" class="btn btn-outline-success fw-semibold">Clock</a> 
+      </div> 
+      <div id="prstdiv" class="mt-3 input-group btn-group pl-0"> 
+       <a href="timer40aa.html?m=1" class="btn btn-outline-success fw-semibold">1min</a> 
+       <a href="timerffba.html?m=5" class="btn btn-outline-success fw-semibold">5min</a> 
+       <a href="timerd73b.html?m=10" class="btn btn-outline-success fw-semibold">10min</a> 
+       <a href="timer7027.html?m=15" class="btn btn-outline-success fw-semibold">15min</a> 
+       <a href="timer7ac6.html?m=20" class="btn btn-outline-success fw-semibold">20min</a> 
+       <a href="timer7fcd.html?m=30" class="btn btn-outline-success fw-semibold">30min</a> 
+      </div> 
+      <div class="mt-3 row"> 
+       <div class="col text-center fw-semibold">
+         Hours 
+       </div> 
+       <div class="col text-center fw-semibold">
+         Minutes 
+       </div> 
+       <div class="col text-center fw-semibold">
+         Seconds 
+       </div> 
+      </div> 
+      <div id="timediv" class="mt-3 text-center"> 
+       <div class="input-group mx-auto"> 
+        <input type="number" min="0" value="00" id="hour" class="text-center form-control px-0"> 
+        <span>:</span> 
+        <input type="number" min="0" value="10" id="min" class="text-center form-control px-0"> 
+        <span>:</span> 
+        <input type="number" min="0" value="00" id="sec" class="text-center form-control px-0"> 
+       </div> 
+      </div> 
+      <div class="mt-3 mt-0 mb-4"> 
+       <progress id="bar" value="0" max="100" class="progress"></progress> 
+      </div> 
+      <div id="btndiv" class="mt-3 row"> 
+       <div class="col"> 
+        <button type="button" id="startbtn" title="Start" class="text-center btn btn-success btn-lg w-100"><img src="../lib/icons/material/svg/play_arrow_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+       <div class="col"> 
+        <button type="button" id="clearbtn" title="Reset" class="text-center btn btn-secondary btn-lg w-100"><img src="../lib/icons/material/svg/clear_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+       <div class="col"> 
+        <button type="button" id="full" onclick="OnFullscreen()" title="Fullscreen" class="btn btn-secondary btn-lg w-100"><img src="../lib/icons/material/svg/fullscreen_white_24dp.svg" loading="lazy" width="24" height="24" alt=""></button> 
+       </div> 
+      </div> 
+      <div class="mt-3"> 
+       <input type="checkbox" id="scheck" class="form-check-input mt-1" checked> 
+       <label for="scheck" class="form-label">Alarm sound</label> 
+      </div> 
+     </form> 
+     <br> 
+     <h2>How to use the timer</h2> 
+     <ul> 
+      <li>The timer counts back hours,minutes and seconds.</li> 
+      <li>Click the preset buttons to set the count back timer of the timer for a predefined value.</li> 
+      <li>Click the hours,minutes and seconds textboxs to set the count time duration.</li> 
+      <li>Press the <img src="../lib/icons/material/svg/play_arrow_white_24dp.svg" loading="lazy" width="24" height="24" alt="" style="filter:invert(100%)"> Start/Pause button to start/pause the timer count.</li> 
+      <li>Press the <b>×</b> Reset button to reset the timer count.</li> 
+      <li>Press the <img src="../lib/icons/material/svg/fullscreen_white_24dp.svg" loading="lazy" width="24" height="24" alt="" style="filter:invert(100%)"> Fullscreen button for a fullscreen view.</li> 
+      <li>Check Alarm sound to enable/disable timer alarm.</li> 
+     </ul> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="stopwatch.html">Online Stopwatch</a></li> 
+      <li><a href="clock.html">Online Clock</a></li> 
+      <li><a href="click-counter.html">Click counter</a></li> 
+      <li><a href="click-test.html">Click speed test</a></li> 
+      <li><a href="scoreboard.html">Online scoreboard</a></li> 
+      <li><a href="timer40aa.html?m=1">1 minute timer</a></li> 
+      <li><a href="timer9db6.html?m=2">2 minutes timer</a></li> 
+      <li><a href="timer9f33.html?m=3">3 minutes timer</a></li> 
+      <li><a href="timercc29.html?m=4">4 minutes timer</a></li> 
+      <li><a href="timerffba.html?m=5">5 minutes timer</a></li> 
+      <li><a href="timerf711.html?m=6">6 minutes timer</a></li> 
+      <li><a href="timer5481.html?m=7">7 minutes timer</a></li> 
+      <li><a href="timerd73b.html?m=10">10 minutes timer</a></li> 
+      <li><a href="timer7027.html?m=15">15 minutes timer</a></li> 
+      <li><a href="timer7ac6.html?m=20">20 minutes timer</a></li> 
+      <li><a href="timer7fcd.html?m=30">30 minutes timer</a></li> 
+      <li><a href="timera1ac.html?m=45">45 minutes timer</a></li> 
+      <li><a href="timerb807.html?m=50">50 minutes timer</a></li> 
+      <li><a href="timer845c.html?m=60">60 minutes timer</a></li> 
+      <li><a href="timer158d.html?s=10">10 seconds timer</a></li> 
+      <li><a href="timerb5f2.html?s=20">20 seconds timer</a></li> 
+      <li><a href="timer5313.html?s=30">30 seconds timer</a></li> 
+      <li><a href="timer7ba7.html?s=60">60 seconds timer</a></li> 
+      <li><a href="timer4777.html?h=1">1 hour timer</a></li> 
+      <li><a href="timerf6c1.html?h=2">2 hours timer</a></li> 
+      <li><a href="timer0e89.html?h=3">3 hours timer</a></li> 
+      <li><a href="timere378.html?h=4">4 hours timer</a></li> 
+      <li><a href="timer5bd5.html?h=5">5 hours timer</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>ONLINE TOOLS</h5> 
+    <ul> 
+     <li><a href="bar-graph.html">Bar graph maker</a></li> 
+     <li><a href="click-counter.html">Click counter</a></li> 
+     <li><a href="click-test.html">Click speed test</a></li> 
+     <li><a href="line-graph.html">Line graph maker</a></li> 
+     <li><a href="notepad.html">Online Notepad</a></li> 
+     <li><a href="mirror.html">Online Mirror</a></li> 
+     <li><a href="password-generator.html">Password generator</a></li> 
+     <li><a href="pie-chart.html">Pie chart maker</a></li> 
+     <li><a href="scatter-plot.html">Scatter plot maker</a></li> 
+     <li><a href="scoreboard.html">Online scoreboard</a></li> 
+     <li><a href="screenshot.html">Online screenshot</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../index-2.html">Home</a> | 
+   <a href="../web/index.html">Web</a> | 
+   <a href="../math/index.html">Math</a> | 
+   <a href="../electric/index.html">Electricity</a> | 
+   <a href="../calc/index.html">Calculators</a> | 
+   <a href="../convert/index.html">Converters</a> | 
+   <a href="index.html">Tools</a> 
+   <p>© <a href="../index.html">Calculators &amp; Tools</a> | <a href="../about/about.html" rel="nofollow">About</a> | <a href="../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script>
+   "use strict"
+   var expand=true;
+   var play=0;
+   var h0="00",m0="10",s0="00";
+   var t,t2=-1,dt,tstart,tpause,tend,timer,duration,audio;
+   var isfullscreen=false;
+   var hour=document.getElementById("hour");
+   var min=document.getElementById("min");
+   var sec=document.getElementById("sec");
+   var startbtn=document.getElementById("startbtn");
+   var clearbtn=document.getElementById("clearbtn");
+   var bar=document.getElementById("bar");
+   var genElem=document.getElementById("gen");
+   var fullElem=document.getElementById("full");
+   var scheckElem=document.getElementById("scheck");
+
+   window.addEventListener("DOMContentLoaded",function() {
+      hour.onclick = function() { hour.select(); }
+      min.onclick = function() { min.select(); }
+      sec.onclick = function() { sec.select(); }
+      hour.onblur = function() { onhourBlur(); }
+      min.onblur = function() { onminBlur(); }
+      sec.onblur = function() { onsecBlur(); }
+      startbtn.onclick = function() { onStart(); }
+      clearbtn.onclick = function() { onClear(0); }
+      var params=GetURLParams();
+      var psdef=(typeof params.s!="undefined");
+      var pmdef=(typeof params.m!="undefined");
+      var phdef=(typeof params.h!="undefined");
+      const el = document.querySelector("#doc>h1");
+      var title="";
+      if( phdef ) {
+         title+=params.h;
+         title+=(params.h=="1")?" Hour":" Hours";
+         title+=" ";
+         var h=decodeURIComponent(params.h);
+         if( h.length==1 ) h="0"+h;
+         hour.value=h;
+      }
+      if( pmdef ) {
+         title+=params.m;
+         title+=(params.m=="1")?" Minute":" Minutes";
+         title+=" ";
+         var m=parseInt(decodeURIComponent(params.m));
+         var i=[5,10,15,20,30].indexOf(m);
+         if( i!=-1 ) {
+            var prstElem=document.querySelectorAll("#prstdiv>a");
+            prstElem[i].classList.add("active");
+         }
+         m=decodeURIComponent(params.m);
+         if( m.length==1 ) m="0"+m;
+         min.value=m;
+      }
+      if( psdef ) {
+         title+=params.s;
+         title+=(params.s=="1")?" Second":" Seconds";
+         title+=" ";
+         var s=decodeURIComponent(params.s);
+         if( s.length==1 ) s="0"+s;
+         sec.value=s;
+      }
+      if( psdef || pmdef || phdef ) {
+         title+="Timer";
+         el.innerHTML = title;
+         document.title = title;
+         if( !psdef ) sec.value="00";
+         if( !pmdef ) min.value="00";
+         if( !phdef ) hour.value="00";
+      }
+   });
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function OnFullscreen()
+   {
+      if( !isfullscreen ) {
+         isfullscreen=true;
+         fullElem.innerHTML="<img src='/lib/icons/material/svg/fullscreen_exit_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         FullscreenReq();
+         setTimeout(function() {
+            document.addEventListener('fullscreenchange', OnFullscreen);
+         }, 1000);
+      }
+      else {
+         isfullscreen=false;
+         fullElem.innerHTML="<img src='/lib/icons/material/svg/fullscreen_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         document.exitFullscreen();
+         document.removeEventListener('fullscreenchange', OnFullscreen);
+      }
+   }
+   function FullscreenReq()
+   {
+      if(genElem.requestFullscreen)
+         genElem.requestFullscreen();
+      else if(genElem.mozRequestFullScreen)
+         genElem.mozRequestFullScreen();
+      else if(genElem.webkitRequestFullscreen)
+         genElem.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      else if(genElem.msRequestFullscreen)
+         genElem.msRequestFullscreen();
+   }
+   function onhourBlur()
+   {
+      if( hour.value.length==0 )
+         hour.value='00';
+      if( hour.value.length==1 )
+         hour.value='0'+hour.value;
+   }
+   function onminBlur()
+   {
+      if( min.value.length==0 )
+         min.value='00';
+      if( min.value.length==1 )
+         min.value='0'+min.value;
+   }
+   function onsecBlur()
+   {
+      if( sec.value.length==0 )
+         sec.value='00';
+      if( sec.value.length==1 )
+         sec.value='0'+sec.value;
+   }
+   function onStart()
+   {
+      t = Date.now();
+      if( play==0 ) {
+         h0=hour.value;
+         m0=min.value;
+         s0=sec.value;
+         if( h0==0 && m0==0 && s0==0 ) return;
+         timer=setTimeout(function() { onTime(); }, 1000);
+         play=1;
+         tstart = t;
+         var h=parseInt(h0);
+         var m=parseInt(m0);
+         var s=parseInt(s0);
+         duration = h*3600+m*60+s;
+         startbtn.title="Pause";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/pause_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         //audio = new Audio('/lib/audio/Digital Notification.mp3');
+         audio = new Audio('../lib/audio/Notification.mp3');
+      }
+      else if( play==1 ) {
+         clearTimeout(timer);
+         play=2;
+         tpause = t;
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      else if( play==2 ) {
+         if( t2==-1 )
+            dt = tpause-tstart;
+         else
+            dt = tpause-t2;
+         timer=setTimeout(function() { onTime(); }, 1000-dt);
+         play=1;
+         tstart+=(t-tpause);
+         startbtn.title="Pause";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/pause_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      else if( play==3 ) {
+         audio.pause();
+         play=0;
+         hour.value=h0;
+         min.value=m0;
+         sec.value=s0;
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+      hour.disabled=true;
+      min.disabled=true;
+      sec.disabled=true;
+   }
+   function onTime()
+   {
+      t2=Date.now();
+      var h=parseInt(hour.value);
+      var m=parseInt(min.value);
+      var s=parseInt(sec.value);
+      if( s>1 || m>0 || h>0) {
+         dt = (t2-tstart)%1000;
+         timer=setTimeout(function() { onTime(); }, 1000-dt);
+      }
+      dt = Math.round(duration-(t2-tstart)/1000);
+      h=Math.floor(dt/3600);
+      m=Math.floor((dt-3600*h)/60);
+      s=dt%60;
+      var s1=s.toString();
+      var m1=m.toString();
+      var h1=h.toString();
+      hour.value=(h1.length==1)?'0'+h1:h1;
+      min.value=(m1.length==1)?'0'+m1:m1;
+      sec.value=(s1.length==1)?'0'+s1:s1;
+      var p=Math.round((t2-tstart)/(10.0*duration));
+      bar.value = p>100?100:p;
+      document.title=hour.value+":"+min.value+":"+sec.value;
+      if( dt<=0 ) {
+         tend = t2;
+         console.log(tend-tstart);
+         onClear(1);
+         play=3;
+         startbtn.title="Stop";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/stop_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+         if (typeof navigator.vibrate === 'function')
+            navigator.vibrate([100,50,100,50,100]);
+         if( scheckElem.checked ) {
+            setTimeout(function() { audio.play(); }, 0);
+            setTimeout(function() { audio.play(); }, 2000);
+            setTimeout(function() { audio.play(); }, 4000);
+         }
+      }
+   }
+   function onClear(n)
+   {
+      clearTimeout(timer);
+      document.title="Countdown Timer Online";
+      play=false;
+      if( n==0 ) {
+         hour.value=h0;
+         min.value=m0;
+         sec.value=s0;
+         bar.value="0";
+         hour.disabled=false;
+         min.disabled=false;
+         sec.disabled=false;
+         startbtn.title="Start";
+         startbtn.innerHTML="<img src='/lib/icons/material/svg/play_arrow_white_24dp.svg' loading='lazy' width='24' height='24' alt=''>";
+      }
+   }
+</script>  
+ </body>
+</html>

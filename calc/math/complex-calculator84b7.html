@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+ <head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <link rel="stylesheet" type="text/css" href="../../lib/rapid02.css"> 
+  <link rel="apple-touch-icon" sizes="180x180" href="../../lib/favicon/apple-touch-icon.png"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-32x32.png" sizes="32x32"> 
+  <link rel="icon" type="image/png" href="../../lib/favicon/favicon-16x16.png" sizes="16x16"> 
+  <link rel="manifest" href="../../lib/favicon/manifest.json"> 
+  <link rel="mask-icon" href="../../lib/favicon/safari-pinned-tab.svg" color="#5bbad5"> 
+  <link rel="shortcut icon" href="../../lib/favicon/favicon.ico"> 
+  <meta name="msapplication-config" content="/lib/favicon/browserconfig.xml"> 
+  <meta name="theme-color" content="#ffffff"> 
+  <meta name="format-detection" content="telephone=no"> 
+  <title>Calculator numbers complex</title> 
+  <meta name="description" content="Complex numbers calculator. Imaginary numbers calculator."> 
+  <link href="/assets/npm/bootstrap%405.0.2/dist/css/bootstrap.min.css" rel="stylesheet"> 
+  <style>
+   h1 { font-size:1.6rem; }
+   h2 { font-size:1.4rem; }
+   h3 { font-size:1.4rem; }
+   h4 { font-size:1.2rem; }
+   #calcform { background:#eee8d5; padding:20px; }
+   #txt { background:#fff; font-size:large; font-family: 'Times New Roman', Times, serif; }
+   #calcbtn { font-weight:bolder; }
+   .btn-group .btn { font-size:large; }
+   @media all and (max-width: 800px) {
+      #calcform { padding:10px; }
+      .btn-group .btn { font-size:medium; }
+   }
+</style> 
+  <!-- Google tag (gtag.js) --> 
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-LKG5DF2S9J"></script> 
+  <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LKG5DF2S9J');
+</script> 
+ </head> 
+ <body> 
+  <div id="header"> 
+   <div> 
+    <div id="logo"> 
+     <a href="../../index.html">Calculators &amp; Tools</a> 
+    </div> 
+    <div class="gcse-search"></div> 
+   </div> 
+  </div> 
+  <div id="wrapper"> 
+   <div id="nav"> 
+    <a href="../../index.html">Home</a>› 
+    <a href="../index.html">Calculators</a>› 
+    <a href="index.html">Math Calculators</a>› 
+    <a href="complex-calculator.html">Complex numbers calculator</a> 
+   </div> 
+   <div id="lcol"> 
+    <div id="doc"> 
+     <h1>Complex Numbers Calculator</h1> 
+     <p>Enter complex numbers expression:</p> 
+     <form id="calcform" name="calcform" autocomplete="off" class="rounded"> 
+      <div class="form-group"> 
+       <textarea rows="5" id="txt" class="form-control form-control-lg" readonly></textarea> 
+      </div> 
+      <div class="form-group"> 
+       <div class="input-group mt-2"> 
+        <input type="text" id="calctxt" name="c" placeholder="Enter a calculation ..." class="form-control form-control-lg" spellcheck="false" autofocus> 
+        <button type="button" id="calcbtn" class="btn btn-success btn-lg">=</button> 
+       </div> 
+      </div> 
+      <div class="form-group btn-group mt-2"> 
+       <button type="button" onclick="AddTxt('i')" title="Imaginary unit" class="btn btn-secondary math"><i>i</i></button> 
+       <button type="button" onclick="AddTxt('+')" class="btn btn-secondary">+</button> 
+       <button type="button" onclick="AddTxt('-')" class="btn btn-secondary">-</button> 
+       <button type="button" onclick="AddTxt('*')" class="btn btn-secondary">×</button> 
+       <button type="button" onclick="AddTxt('../../index.html')" class="btn btn-secondary">÷</button> 
+       <button type="button" onclick="AddTxt('^')" class="btn btn-secondary math"><i>x <sup>y</sup></i></button> 
+       <button type="button" onclick="AddTxt('sqrt(')" class="btn btn-secondary math">√<span style="border-top:1px solid">&nbsp;&nbsp;</span></button> 
+       <button type="button" onclick="AddTxt('pi')" class="btn btn-secondary math">π</button> 
+      </div> 
+      <div class="form-group btn-group mt-2"> 
+       <button type="button" title="Real part" onclick="AddTxt('re(')" class="btn btn-secondary math">Re(<i>z</i>)</button> 
+       <button type="button" title="Imaginary part" onclick="AddTxt('im(')" class="btn btn-secondary math">Im(<i>z</i>)</button> 
+       <button type="button" title="Absolute value" onclick="AddTxt('abs(')" class="btn btn-secondary math">|<i>z</i>|</button> 
+       <button type="button" title="Argument" onclick="AddTxt('arg(')" class="btn btn-secondary math">arg(<i>z</i>)</button> 
+       <button type="button" title="Complex conjugate" onclick="AddTxt('conj(')" class="btn btn-secondary math">conj(<i>z</i>)</button> 
+      </div> 
+     </form> 
+     <br> 
+     <h2>Complex numbers calculation examples</h2> 
+     <p>Addition: <a href="complex-calculator0b25.html?c=(3%2B2i)%2B(5-3i)">(3+2i)+(5-3i)</a></p> 
+     <p>Subtraction: <a href="complex-calculatore7d5.html?c=(3%2B2i)-(5-3i)">(3+2i)-(5-3i)</a></p> 
+     <p>Multiplication: <a href="complex-calculator1cb8.html?c=(3%2B2i)*(5-3i)">(3+2i)*(5-3i)</a></p> 
+     <p>Division: <a href="complex-calculator5254.html?c=(3%2B2i)%2F(5-3i)">(3+2i)/(5-3i)</a></p> 
+     <p>Real part: <a href="complex-calculator84b7.html?c=re(3%2B2i)">re(3+2i)</a></p> 
+     <p>Imaginary part: <a href="complex-calculatorc225.html?c=im(3%2B2i)">im(3+2i)</a></p> 
+     <p>Absolute value (magnitude): <a href="complex-calculator0b5e.html?c=abs(3%2B2i)">abs(3+2i)</a></p> 
+     <p>Argument angle (radians): <a href="complex-calculator1e22.html?c=arg(3%2B2i)">arg(3+2i)</a></p> 
+     <p>Conjugate number: <a href="complex-calculator062e.html?c=conj(3%2B2i)">conj(3+2i)</a></p> 
+     <br> 
+     <hr> 
+     <h2>See also</h2> 
+     <ul class="seealso"> 
+      <li><a href="simple-calculator.html">Simple calculator</a></li> 
+      <li><a href="Percentage_Calculator.html">Percentage calculator</a></li> 
+      <li><a href="fractions-calculator.html">Fraction calculator</a></li> 
+      <li><a href="../electric/ohms-law-calculator.html">Ohm's law calculator</a></li> 
+     </ul> 
+     <div id="adngin-bottom_01-0"></div> 
+    </div> 
+   </div> 
+   <div id="rcol"> 
+    <div id="adngin-right_sidebar-0"></div> 
+    <h5>MATH CALCULATORS</h5> 
+    <ul> 
+     <li><a href="calculator.html">Scientific calculator</a></li> 
+     <li><a href="simple-calculator.html">Simple calculator</a></li> 
+     <li><a href="average-calculator.html">Average calculator</a></li> 
+     <li><a href="base-calculator.html">Base calculator</a></li> 
+     <li><a href="complex-calculator.html">Complex numbers calculator</a></li> 
+     <li><a href="fractions-calculator.html">Fractions calculator</a></li> 
+     <li><a href="Percentage_Calculator.html">Percentage calculator</a></li> 
+    </ul> 
+    <h5>CONTACT</h5> 
+    <ul> 
+     <li><a href="mailto:?subject=Calculators &amp; Tools%20website&amp;body=Please%20checkout%20this%20site:%20https://rapid-tables.com">Recommend Site</a></li> 
+     <li><a href="#feedback">Send Feedback</a></li> 
+     <li><a href="../../about/about.html">About</a></li> 
+    </ul> 
+   </div> 
+  </div> 
+  <div id="footer"> 
+   <a href="../../index-2.html">Home</a> | 
+   <a href="../../web/index.html">Web</a> | 
+   <a href="../../math/index.html">Math</a> | 
+   <a href="../../electric/index.html">Electricity</a> | 
+   <a href="../index.html">Calculators</a> | 
+   <a href="../../convert/index.html">Converters</a> | 
+   <a href="../../tools/index.html">Tools</a> 
+   <p>© <a href="../../index.html">Calculators &amp; Tools</a> | <a href="../../about/about.html" rel="nofollow">About</a> | <a href="../../about/terms.html" rel="nofollow">Terms of Use</a> | <a href="../../about/privacy.html" rel="nofollow">Privacy Policy</a> | <a href="../../about/cookies.html" rel="nofollow">Manage Cookies</a> </p> 
+  </div> 
+  <div id="adngin-adhesive-0"></div> 
+  <script src="/assets/ajax/libs/mathjs/11.3.2/math.min.js" referrerpolicy="no-referrer"></script> 
+  <script src="../calc2.js"></script> 
+  <script>
+   "use strict"
+   var prec=16;
+   var calcformElem=document.getElementById("calcform");
+   var txtElem=document.getElementById("txt");
+   var calctxtElem=document.getElementById("calctxt");
+   var calcbtnElem=document.getElementById("calcbtn");
+   window.addEventListener("DOMContentLoaded",function() {
+      calcformElem.onkeypress = function(e) { if( e.keyCode==13 ) { event.preventDefault(); OnCalc(); } };
+      calcbtn.onclick=function() { OnCalc(); }
+      math.config({
+         number: 'BigNumber',
+         precision: prec
+      });
+      var params=GetURLParams();
+      //if( Object.keys(params).length>0 ) {
+      if( typeof params.c!="undefined" ) {
+         calctxt.value = decodeURIComponent2(params.c);
+         OnCalc();
+      }
+   });
+   function GetURLParams()
+   {
+      var url=window.location.href;
+      var regex = /[?&]([^=#]+)=([^&#]*)/g,
+            //url = "www.domain.com/?v=123&p=hello",
+            params = {},
+            match;
+      while(match = regex.exec(url)) {
+         params[match[1]] = match[2];
+      }
+      return params;
+   }
+   function OnCalc()
+   {
+      var s=calctxt.value;
+      s=str2num2(s);
+      var z=math.evaluate(s);
+      if( txt.value!="" ) txt.value+="\n";
+      //txt.value += calctxt.value+"\n= "+num2str(z.re)+" + "+num2str(z.im)+"i\n";
+      txt.value += num2str3(calctxt.value)+"\n= ";
+      txt.value+=z;
+      if( typeof z.im!=='undefined' ) {
+         var zp = math.complex(z).toPolar();
+         var phi=zp.phi*180.0/Math.PI;
+         txt.value += "\n= "+zp.r+" \u2220"+phi+"\u00B0";
+      }
+      calctxt.value="";
+      calctxt.focus();
+      txt.scrollTop = txt.scrollHeight;
+   }
+   /*
+   function num2str(x)
+   {
+      return(parseFloat(x.toFixed(prec-2)));
+   }
+   */
+   function AddTxt(s)
+   {
+      calctxt.value+=s;
+      calctxt.focus();
+   }
+</script>  
+ </body>
+</html>
